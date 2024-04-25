@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var gyro = GyroManager.shared
+    @State private var curr: Double = 0
+    @State private var gyroInfo: String = "Inactive"
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Gyro Status: \(gyroInfo)")
         }
-        .padding()
+        .onAppear(){
+            curr = gyro.x
+        }
+    }
+    
+    func checkSideMove(){
+        if curr < gyro.x {
+            gyroInfo = "Left"
+        } else {
+            gyroInfo = "Right"
+        }
     }
 }
 

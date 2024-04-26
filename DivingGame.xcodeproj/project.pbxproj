@@ -12,6 +12,8 @@
 		3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4662BDA3E000033F7FE /* Assets.xcassets */; };
 		3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */; };
 		3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */; };
+		3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49B2BDA4AD80033F7FE /* GameScene.swift */; };
+		3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49D2BDA542D0033F7FE /* ControlButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		3A92D4662BDA3E000033F7FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
+		3A92D49B2BDA4AD80033F7FE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3A92D49D2BDA542D0033F7FE /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 				3A92D4642BDA3DFF0033F7FE /* ContentView.swift */,
 				3A92D4662BDA3E000033F7FE /* Assets.xcassets */,
 				3A92D4682BDA3E000033F7FE /* Preview Content */,
+				3A92D49D2BDA542D0033F7FE /* ControlButton.swift */,
 			);
 			path = DivingGame;
 			sourceTree = "<group>";
@@ -73,9 +78,18 @@
 		3A92D4702BDA3EE40033F7FE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A92D49A2BDA4AC40033F7FE /* SpriteKit */,
 				3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		3A92D49A2BDA4AC40033F7FE /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				3A92D49B2BDA4AD80033F7FE /* GameScene.swift */,
+			);
+			path = SpriteKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +164,8 @@
 			files = (
 				3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */,
 				3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */,
+				3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */,
+				3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */,
 				3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

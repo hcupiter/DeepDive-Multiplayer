@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var currentOxygenLevel: CGFloat!
     var maxOxygenLevel: CGFloat!
     var oxygenDecreaseInterval: CGFloat!
+    var lastSavedOxygenTime: TimeInterval!
     
     var gyro = GyroManager.shared
 
@@ -53,7 +54,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         cameraNode = SKCameraNode()
         cameraNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
-        cameraNode.setScale(1.5)
         
         section2LimitNode = SKSpriteNode(color: UIColor.red, size: CGSize(width: mapNode.size.width, height: 10))
         section2LimitNode.position = CGPoint(x: 0, y: section2)
@@ -112,6 +112,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        decreaseOxygen(currentTime)
+        
         //zone checker for section 1
         if(playerNode.position.y > section2LimitNode.position.y){
             // turn on shark trap
@@ -294,22 +296,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // for counting oxigen decreasse in section 1
     func oxigenSection1(){
-        
+        oxygenDecreaseInterval = 2
     }
     
     // for counting oxigen decreasse in section 2
     func oxigenSection2(){
-        
+        oxygenDecreaseInterval = 1
     }
     
     // for counting oxigen decreasse in section 3
     func oxigenSection3(){
-        
+        oxygenDecreaseInterval = 0.5
+    }
+    
+    func decreaseOxygen(_ currentTime: TimeInterval){
+        if lastSavedOxygenTime == nil {
+            lastSavedOxygenTime = currentTime
+        }
+        else {
+            if abs(lastSavedOxygenTime - currentTime) >= oxygenDecreaseInterval {
+                currentOxygenLevel -= 1
+                lastSavedOxygenTime = nil
+                print("Oxygen decreased: \(currentOxygenLevel ?? -1)")
+            }
+        }
     }
     
     func initOxygen(){
         currentOxygenLevel = 100
         maxOxygenLevel = 100
-        oxygenDecreaseInterval = 1
+        oxygenDecreaseInterval = 2
     }
 }

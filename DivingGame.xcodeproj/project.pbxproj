@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A17462B2BDCEF4E004EFBF5 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462A2BDCEF4E004EFBF5 /* Utility.swift */; };
+		3A17462D2BDCEF63004EFBF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462C2BDCEF63004EFBF5 /* Constants.swift */; };
+		3A17462F2BDD107E004EFBF5 /* Oxygen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462E2BDD107E004EFBF5 /* Oxygen.swift */; };
+		3A1746322BDD2FF0004EFBF5 /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */; };
 		3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */; };
 		3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4642BDA3DFF0033F7FE /* ContentView.swift */; };
 		3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4662BDA3E000033F7FE /* Assets.xcassets */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A17462A2BDCEF4E004EFBF5 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3A17462C2BDCEF63004EFBF5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3A17462E2BDD107E004EFBF5 /* Oxygen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oxygen.swift; sourceTree = "<group>"; };
+		3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
 		3A92D45F2BDA3DFF0033F7FE /* DivingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DivingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivingGameApp.swift; sourceTree = "<group>"; };
 		3A92D4642BDA3DFF0033F7FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1746302BDD1083004EFBF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A17462E2BDD107E004EFBF5 /* Oxygen.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3A92D4562BDA3DFF0033F7FE = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +73,14 @@
 		3A92D4612BDA3DFF0033F7FE /* DivingGame */ = {
 			isa = PBXGroup;
 			children = (
+				3A1746302BDD1083004EFBF5 /* Models */,
 				3A92D4702BDA3EE40033F7FE /* Utils */,
 				3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */,
 				3A92D4642BDA3DFF0033F7FE /* ContentView.swift */,
 				3A92D4662BDA3E000033F7FE /* Assets.xcassets */,
 				3A92D4682BDA3E000033F7FE /* Preview Content */,
 				3A92D49D2BDA542D0033F7FE /* ControlButton.swift */,
+				3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */,
 			);
 			path = DivingGame;
 			sourceTree = "<group>";
@@ -80,6 +98,8 @@
 			children = (
 				3A92D49A2BDA4AC40033F7FE /* SpriteKit */,
 				3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */,
+				3A17462A2BDCEF4E004EFBF5 /* Utility.swift */,
+				3A17462C2BDCEF63004EFBF5 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,8 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */,
+				3A17462F2BDD107E004EFBF5 /* Oxygen.swift in Sources */,
 				3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */,
+				3A17462B2BDCEF4E004EFBF5 /* Utility.swift in Sources */,
 				3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */,
+				3A1746322BDD2FF0004EFBF5 /* OxygenBar.swift in Sources */,
+				3A17462D2BDCEF63004EFBF5 /* Constants.swift in Sources */,
 				3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */,
 				3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */,
 			);

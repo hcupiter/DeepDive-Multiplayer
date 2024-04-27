@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+class Oxygen: ObservableObject {
+    @Published var oxygenLevel: CGFloat = 100
+    var maxOxygenLevel: CGFloat
+    
+    init(){
+        maxOxygenLevel = 100
+    }
+    
+    func updateOxygen() {
+        oxygenLevel -= 1
+    }
+}

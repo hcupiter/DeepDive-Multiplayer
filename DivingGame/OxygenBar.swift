@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct OxygenBar: View {
+    @Binding var current: CGFloat
+    @Binding var max: CGFloat
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ProgressView(value: current, total: max)
+            .tint(Color.green)
+            .scaleEffect(x: 1, y: 5)
+            .padding()
     }
 }
 
 #Preview {
-    OxygenBar()
+    OxygenBar(current: .constant(50), max: .constant(100))
 }

@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xLimiter : SKSpriteNode!
     var yLimiter : SKSpriteNode!
     
-    var oxygenBarNode: SKSpriteNode!
+//    var oxygenBarNode: SKSpriteNode!
     var currentOxygenLevel: CGFloat!
     var maxOxygenLevel: CGFloat!
     var oxygenDecreaseInterval: CGFloat!
@@ -72,8 +72,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         yLimiter = SKSpriteNode(color: UIColor.cyan, size: CGSize(width: 10, height: mapNode.size.height))
         yLimiter.position = CGPoint(x: 0, y: 0)
         
-        oxygenBarNode = SKSpriteNode(color: UIColor.green, size: CGSize(width: 20, height: 100))
-        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 30, y: playerNode.position.y + 30)
+//        oxygenBarNode = SKSpriteNode(color: UIColor.green, size: CGSize(width: 20, height: 100))
+//        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 30, y: playerNode.position.y + 30)
         
         initOxygen()
         
@@ -82,7 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(section2LimitNode)
         addChild(section3LimitNode)
         addChild(cameraNode)
-        addChild(oxygenBarNode)
+//        addChild(oxygenBarNode)
         //        addChild(mapDivider)
         //        addChild(xLimiter)
         //        addChild(yLimiter)
@@ -215,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         cameraNode.position = playerNode.position
-        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 40, y: playerNode.position.y + 40)
+//        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 40, y: playerNode.position.y + 40)
     }
     
     func addSharks(){
@@ -318,23 +318,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     currentOxygenLevel -= 1
                     lastSavedOxygenTime = nil
                 }
-                else {
-                    oxygenBarNode.removeFromParent()
-                }
-                
-                oxygenBarNode.size = CGSize(width: oxygenBarNode.size.width, height: currentOxygenLevel)
-                if(currentOxygenLevel <= 100 && currentOxygenLevel > 75){
-                    oxygenBarNode.color = UIColor.green
-                }
-                else if(currentOxygenLevel <= 75 && currentOxygenLevel > 50){
-                    oxygenBarNode.color = UIColor.yellow
-                }
-                else if(currentOxygenLevel <= 50 && currentOxygenLevel > 25){
-                    oxygenBarNode.color = UIColor.orange
-                }
-                else if(currentOxygenLevel <= 25){
-                    oxygenBarNode.color = UIColor.red
-                }
+//                else {
+//                    oxygenBarNode.removeFromParent()
+//                }
+//                
+//                oxygenBarNode.size = CGSize(width: oxygenBarNode.size.width, height: currentOxygenLevel)
+//                if(currentOxygenLevel <= 100 && currentOxygenLevel > 75){
+//                    oxygenBarNode.color = UIColor.green
+//                }
+//                else if(currentOxygenLevel <= 75 && currentOxygenLevel > 50){
+//                    oxygenBarNode.color = UIColor.yellow
+//                }
+//                else if(currentOxygenLevel <= 50 && currentOxygenLevel > 25){
+//                    oxygenBarNode.color = UIColor.orange
+//                }
+//                else if(currentOxygenLevel <= 25){
+//                    oxygenBarNode.color = UIColor.red
+//                }
                 print("Oxygen decreased: \(currentOxygenLevel ?? -1)")
             }
         }

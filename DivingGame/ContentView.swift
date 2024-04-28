@@ -14,8 +14,6 @@ struct ContentView: View {
     @State private var gyroInfo: String = "Inactive"
     @State private var isButtonPressed: Bool = false
     
-    @State private var currentOxygen: CGFloat = 100
-    
     var gameScene: GameScene
     init(){
         gameScene = GameScene(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -23,15 +21,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ZStack(alignment: .topTrailing){
+            ZStack(alignment: .bottom){
 //                Text("Gyro Status: \(gyroInfo)  \(gyro.x) \(gyro.y)")
 //                Text("Player position x: \(gameScene.playerNode.position.x) y: \(gameScene.playerNode.position.y)")
                 SpriteView(scene: gameScene)
-                    .onChange(of: gameScene.currentOxygenLevel) {
-                        currentOxygen = gameScene.currentOxygenLevel
-                    }
-                OxygenBar(current: $currentOxygen, max: .constant(100))
-                    .padding([.top, .trailing], 40)
             }
         }
         .ignoresSafeArea()

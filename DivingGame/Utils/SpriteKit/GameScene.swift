@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene{
     
     var sceneWidth : SKLabelNode!
     var sceneHeight :SKLabelNode!
@@ -20,13 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var mapDivider : SKSpriteNode!
     var xLimiter : SKSpriteNode!
     var yLimiter : SKSpriteNode!
-    
-    var oxygenBarNode: SKSpriteNode!
-    var currentOxygenLevel: CGFloat!
-    var maxOxygenLevel: CGFloat!
-    var oxygenDecreaseInterval: CGFloat!
-    var lastSavedOxygenTime: TimeInterval!
-    
     var gyro = GyroManager.shared
 
     var sharkTraps : Bool = false
@@ -43,7 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(sceneWidth)
         addChild(sceneHeight)
-    
+        
+        
         // map nodes
         mapNode = SKSpriteNode(texture: SKTexture(imageNamed: "Map"))
         mapNode.position = CGPoint(x: 0, y: 0)
@@ -52,6 +46,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = CGPoint(x: 0, y: mapNode.position.y + (mapNode.size.height/2) - (mapNode.size.height * 0.1))
+        //        playerNode.position = CGPoint(x: 0, y: 0)
+        //setup player physics
+        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+        playerNode.physicsBody?.isDynamic = true
+        playerNode.physicsBody?.categoryBitMask = PhysicsCategory.player
+        playerNode.physicsBody?.contactTestBitMask = PhysicsCategory.shark | PhysicsCategory.bomb
+        playerNode.physicsBody?.collisionBitMask = PhysicsCategory.shark
+        playerNode.physicsBody?.usesPreciseCollisionDetection = true
         
         cameraNode = SKCameraNode()
         cameraNode.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y)
@@ -72,17 +74,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         yLimiter = SKSpriteNode(color: UIColor.cyan, size: CGSize(width: 10, height: mapNode.size.height))
         yLimiter.position = CGPoint(x: 0, y: 0)
         
-        oxygenBarNode = SKSpriteNode(color: UIColor.green, size: CGSize(width: 20, height: 100))
-        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 30, y: playerNode.position.y + 30)
-        
-        initOxygen()
-        
         addChild(mapNode)
         addChild(playerNode)
+        addChild(cameraNode)
         addChild(section2LimitNode)
         addChild(section3LimitNode)
-        addChild(cameraNode)
-        addChild(oxygenBarNode)
         //        addChild(mapDivider)
         //        addChild(xLimiter)
         //        addChild(yLimiter)
@@ -93,13 +89,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
     override func didMove(to view: SKView) {
         initializeObjects()
         self.camera = cameraNode
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: mapNode.frame)
         self.physicsWorld.contactDelegate = self
         backgroundColor = SKColor.blueSky
+        
+        // set physics for the map
+        physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,8 +109,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        decreaseOxygen(currentTime)
-        
         //zone checker for section 1
         if(playerNode.position.y > section2LimitNode.position.y){
             // turn on shark trap
@@ -120,7 +117,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 sharkTraps = true
                 print("Shark Traps on : \(sharkTraps.description)")
                 
-                let intervalDuration = SKAction.wait(forDuration: 1.5)
+                // define shark spawn interval
+                let intervalDuration = SKAction.wait(forDuration: 3)
                 let addSharkAction = SKAction.run {
                     self.addSharks()
                 }
@@ -152,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.addBombs()
                 }
                 
-                let repeatAction = SKAction.repeat(addBombAction, count: 20)
+                let repeatAction = SKAction.repeat(addBombAction, count: 10)
                 self.run(repeatAction)
             }
             
@@ -215,7 +213,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         cameraNode.position = playerNode.position
-        oxygenBarNode.position = CGPoint(x: playerNode.position.x + 40, y: playerNode.position.y + 40)
     }
     
     func addSharks(){
@@ -236,6 +233,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sharkNode.position = CGPoint(
             x: sharkXPosition,
             y: sharkYPositon)
+        
+        //setup shark physics
+        sharkNode.physicsBody = SKPhysicsBody(rectangleOf: sharkNode.size) // 1
+        sharkNode.physicsBody?.isDynamic = true // 2
+        sharkNode.physicsBody?.categoryBitMask = PhysicsCategory.shark // 3
+        sharkNode.physicsBody?.contactTestBitMask = PhysicsCategory.player // 4
+        sharkNode.physicsBody?.collisionBitMask = PhysicsCategory.player // 5
         
         addChild(sharkNode)
         
@@ -264,6 +268,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addBombs(){
         let bombNode = SKSpriteNode(imageNamed: bomb)
         
+        bombNode.name = "Bomb"
+        
         let bombYPosition = random(
             min: section3LimitNode.position.y - bombNode.size.height,
             max: mapBottomSide + bombNode.size.height)
@@ -275,6 +281,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bombNode.position = CGPoint(
             x : bombXPosition,
             y : bombYPosition)
+        
+        //setup player physics
+        bombNode.physicsBody = SKPhysicsBody(rectangleOf: bombNode.size)
+        bombNode.physicsBody?.isDynamic = true
+        bombNode.physicsBody?.categoryBitMask = PhysicsCategory.bomb
+        bombNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        bombNode.physicsBody?.collisionBitMask = PhysicsCategory.none
         
         addChild(bombNode)
     }
@@ -295,54 +308,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // for counting oxigen decreasse in section 1
     func oxigenSection1(){
-        oxygenDecreaseInterval = 1.5
     }
     
     // for counting oxigen decreasse in section 2
     func oxigenSection2(){
-        oxygenDecreaseInterval = 0.5
+        
     }
     
     // for counting oxigen decreasse in section 3
     func oxigenSection3(){
-        oxygenDecreaseInterval = 0.3
+        
     }
     
-    func decreaseOxygen(_ currentTime: TimeInterval){
-        if lastSavedOxygenTime == nil {
-            lastSavedOxygenTime = currentTime
+    func playerCollideWithObject(player: SKSpriteNode, object: SKSpriteNode) {
+        if object.name == "Bomb"{
+            object.removeFromParent()
+            print("Hit Bomb")
+            
+            // logic when hit bomb
+            
         }
-        else {
-            if abs(lastSavedOxygenTime - currentTime) >= oxygenDecreaseInterval {
-                if currentOxygenLevel > 0 {
-                    currentOxygenLevel -= 1
-                    lastSavedOxygenTime = nil
-                }
-                else {
-                    oxygenBarNode.removeFromParent()
-                }
-                
-                oxygenBarNode.size = CGSize(width: oxygenBarNode.size.width, height: currentOxygenLevel)
-                if(currentOxygenLevel <= 100 && currentOxygenLevel > 75){
-                    oxygenBarNode.color = UIColor.green
-                }
-                else if(currentOxygenLevel <= 75 && currentOxygenLevel > 50){
-                    oxygenBarNode.color = UIColor.yellow
-                }
-                else if(currentOxygenLevel <= 50 && currentOxygenLevel > 25){
-                    oxygenBarNode.color = UIColor.orange
-                }
-                else if(currentOxygenLevel <= 25){
-                    oxygenBarNode.color = UIColor.red
-                }
-                print("Oxygen decreased: \(currentOxygenLevel ?? -1)")
+        else if object.name == "Shark"{
+            print("Hit Shark")
+            
+            // logic when hit shark
+            
+        }
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        // get collided objects
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        // define the collided object
+        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.player == 0)) {
+            if let player = firstBody.node as? SKSpriteNode,
+               let object = secondBody.node as? SKSpriteNode {
+                playerCollideWithObject(player: player, object: object)
             }
         }
     }
     
-    func initOxygen(){
-        currentOxygenLevel = 100
-        maxOxygenLevel = 100
-        oxygenDecreaseInterval = 2
-    }
 }

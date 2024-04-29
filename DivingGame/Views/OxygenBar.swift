@@ -1,6 +1,6 @@
 //
 //  OxygenBar.swift
-//  DivingGame
+//  DeepDive
 //
 //  Created by Hans Arthur Cupiterson on 27/04/24.
 //
@@ -23,7 +23,7 @@ struct OxygenBar: View {
                 .fill(progressColor)
                 .frame(width: 30, height: percentage)
         }
-        .onChange(of: current) { oldValue, newValue in
+        .onChange(of: current) {
             percentage = calculatePercentage() * 200
             progressColor = changeColor()
         }
@@ -57,5 +57,5 @@ struct OxygenBar: View {
 }
 
 #Preview {
-    OxygenBar(current: .constant(30), max: .constant(100))
+    OxygenBar(current: .constant(50), max: .constant(100))
 }

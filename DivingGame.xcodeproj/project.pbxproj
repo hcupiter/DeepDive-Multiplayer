@@ -7,34 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A17462B2BDCEF4E004EFBF5 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462A2BDCEF4E004EFBF5 /* Utility.swift */; };
-		3A17462D2BDCEF63004EFBF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462C2BDCEF63004EFBF5 /* Constants.swift */; };
-		3A17462F2BDD107E004EFBF5 /* Oxygen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17462E2BDD107E004EFBF5 /* Oxygen.swift */; };
-		3A1746322BDD2FF0004EFBF5 /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */; };
-		3A1746342BDD5346004EFBF5 /* CollisionObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1746332BDD5346004EFBF5 /* CollisionObjects.swift */; };
-		3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */; };
-		3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4642BDA3DFF0033F7FE /* ContentView.swift */; };
+		3A27552C2BDF461300F47882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755202BDF461300F47882 /* Assets.xcassets */; };
+		3A27552D2BDF461300F47882 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755212BDF461300F47882 /* Preview Assets.xcassets */; };
+		3A27552E2BDF461300F47882 /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755232BDF461300F47882 /* FrameHandler.swift */; };
+		3A27552F2BDF461300F47882 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755242BDF461300F47882 /* FrameView.swift */; };
+		3A2755302BDF461300F47882 /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755252BDF461300F47882 /* ScreenshotView.swift */; };
+		3A2755312BDF461300F47882 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755272BDF461300F47882 /* StoryView.swift */; };
+		3A2755322BDF461300F47882 /* DivingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755292BDF461300F47882 /* DivingGame.swift */; };
+		3A2755332BDF461300F47882 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27552A2BDF461300F47882 /* Haptic.swift */; };
+		3A2755382BDF468900F47882 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755342BDF468900F47882 /* GameScene.swift */; };
+		3A2755392BDF468900F47882 /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755352BDF468900F47882 /* OxygenBar.swift */; };
+		3A27553A2BDF468900F47882 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755362BDF468900F47882 /* ContentView.swift */; };
+		3A27553B2BDF468900F47882 /* CollisionObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755372BDF468900F47882 /* CollisionObjects.swift */; };
+		3A27553F2BDF46F800F47882 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553C2BDF46F800F47882 /* Utility.swift */; };
+		3A2755402BDF46F800F47882 /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553D2BDF46F800F47882 /* GyroManager.swift */; };
+		3A2755412BDF46F800F47882 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553E2BDF46F800F47882 /* Constant.swift */; };
 		3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4662BDA3E000033F7FE /* Assets.xcassets */; };
 		3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */; };
-		3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */; };
-		3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49B2BDA4AD80033F7FE /* GameScene.swift */; };
-		3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49D2BDA542D0033F7FE /* ControlButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A17462A2BDCEF4E004EFBF5 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		3A17462C2BDCEF63004EFBF5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3A17462E2BDD107E004EFBF5 /* Oxygen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oxygen.swift; sourceTree = "<group>"; };
-		3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
-		3A1746332BDD5346004EFBF5 /* CollisionObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionObjects.swift; sourceTree = "<group>"; };
+		3A2755202BDF461300F47882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A2755212BDF461300F47882 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A2755232BDF461300F47882 /* FrameHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		3A2755242BDF461300F47882 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		3A2755252BDF461300F47882 /* ScreenshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotView.swift; sourceTree = "<group>"; };
+		3A2755272BDF461300F47882 /* StoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		3A2755292BDF461300F47882 /* DivingGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivingGame.swift; sourceTree = "<group>"; };
+		3A27552A2BDF461300F47882 /* Haptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
+		3A2755342BDF468900F47882 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3A2755352BDF468900F47882 /* OxygenBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
+		3A2755362BDF468900F47882 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3A2755372BDF468900F47882 /* CollisionObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionObjects.swift; sourceTree = "<group>"; };
+		3A27553C2BDF46F800F47882 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3A27553D2BDF46F800F47882 /* GyroManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
+		3A27553E2BDF46F800F47882 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		3A92D45F2BDA3DFF0033F7FE /* DivingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DivingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivingGameApp.swift; sourceTree = "<group>"; };
-		3A92D4642BDA3DFF0033F7FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A92D4662BDA3E000033F7FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
-		3A92D49B2BDA4AD80033F7FE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		3A92D49D2BDA542D0033F7FE /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,12 +58,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A1746302BDD1083004EFBF5 /* Models */ = {
+		3A2755222BDF461300F47882 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				3A17462E2BDD107E004EFBF5 /* Oxygen.swift */,
+				3A2755212BDF461300F47882 /* Preview Assets.xcassets */,
 			);
-			path = Models;
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3A2755262BDF461300F47882 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				3A2755232BDF461300F47882 /* FrameHandler.swift */,
+				3A2755242BDF461300F47882 /* FrameView.swift */,
+				3A2755252BDF461300F47882 /* ScreenshotView.swift */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		3A2755282BDF461300F47882 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A2755372BDF468900F47882 /* CollisionObjects.swift */,
+				3A2755362BDF468900F47882 /* ContentView.swift */,
+				3A2755342BDF468900F47882 /* GameScene.swift */,
+				3A2755352BDF468900F47882 /* OxygenBar.swift */,
+				3A2755262BDF461300F47882 /* Screenshots */,
+				3A2755272BDF461300F47882 /* StoryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A27552B2BDF461300F47882 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3A27553E2BDF46F800F47882 /* Constant.swift */,
+				3A27553D2BDF46F800F47882 /* GyroManager.swift */,
+				3A27553C2BDF46F800F47882 /* Utility.swift */,
+				3A27552A2BDF461300F47882 /* Haptic.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3A92D4562BDA3DFF0033F7FE = {
@@ -75,15 +119,13 @@
 		3A92D4612BDA3DFF0033F7FE /* DivingGame */ = {
 			isa = PBXGroup;
 			children = (
-				3A1746302BDD1083004EFBF5 /* Models */,
-				3A92D4702BDA3EE40033F7FE /* Utils */,
-				3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */,
-				3A92D4642BDA3DFF0033F7FE /* ContentView.swift */,
+				3A2755202BDF461300F47882 /* Assets.xcassets */,
+				3A2755292BDF461300F47882 /* DivingGame.swift */,
+				3A2755222BDF461300F47882 /* Preview Content */,
+				3A27552B2BDF461300F47882 /* Utils */,
+				3A2755282BDF461300F47882 /* Views */,
 				3A92D4662BDA3E000033F7FE /* Assets.xcassets */,
 				3A92D4682BDA3E000033F7FE /* Preview Content */,
-				3A92D49D2BDA542D0033F7FE /* ControlButton.swift */,
-				3A1746312BDD2FF0004EFBF5 /* OxygenBar.swift */,
-				3A1746332BDD5346004EFBF5 /* CollisionObjects.swift */,
 			);
 			path = DivingGame;
 			sourceTree = "<group>";
@@ -94,25 +136,6 @@
 				3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3A92D4702BDA3EE40033F7FE /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3A92D49A2BDA4AC40033F7FE /* SpriteKit */,
-				3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */,
-				3A17462A2BDCEF4E004EFBF5 /* Utility.swift */,
-				3A17462C2BDCEF63004EFBF5 /* Constants.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		3A92D49A2BDA4AC40033F7FE /* SpriteKit */ = {
-			isa = PBXGroup;
-			children = (
-				3A92D49B2BDA4AD80033F7FE /* GameScene.swift */,
-			);
-			path = SpriteKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +170,7 @@
 				TargetAttributes = {
 					3A92D45E2BDA3DFF0033F7FE = {
 						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -173,7 +197,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A27552D2BDF461300F47882 /* Preview Assets.xcassets in Resources */,
 				3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */,
+				3A27552C2BDF461300F47882 /* Assets.xcassets in Resources */,
 				3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,16 +211,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */,
-				3A17462F2BDD107E004EFBF5 /* Oxygen.swift in Sources */,
-				3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */,
-				3A17462B2BDCEF4E004EFBF5 /* Utility.swift in Sources */,
-				3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */,
-				3A1746342BDD5346004EFBF5 /* CollisionObjects.swift in Sources */,
-				3A1746322BDD2FF0004EFBF5 /* OxygenBar.swift in Sources */,
-				3A17462D2BDCEF63004EFBF5 /* Constants.swift in Sources */,
-				3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */,
-				3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */,
+				3A2755332BDF461300F47882 /* Haptic.swift in Sources */,
+				3A2755392BDF468900F47882 /* OxygenBar.swift in Sources */,
+				3A2755302BDF461300F47882 /* ScreenshotView.swift in Sources */,
+				3A27553F2BDF46F800F47882 /* Utility.swift in Sources */,
+				3A2755402BDF46F800F47882 /* GyroManager.swift in Sources */,
+				3A27552F2BDF461300F47882 /* FrameView.swift in Sources */,
+				3A2755322BDF461300F47882 /* DivingGame.swift in Sources */,
+				3A27553B2BDF468900F47882 /* CollisionObjects.swift in Sources */,
+				3A27553A2BDF468900F47882 /* ContentView.swift in Sources */,
+				3A2755412BDF46F800F47882 /* Constant.swift in Sources */,
+				3A2755312BDF461300F47882 /* StoryView.swift in Sources */,
+				3A2755382BDF468900F47882 /* GameScene.swift in Sources */,
+				3A27552E2BDF461300F47882 /* FrameHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DivingGame/Preview Content\"";
@@ -344,6 +374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appledevacad.test.divingGame.DivingGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DivingGame/Preview Content\"";

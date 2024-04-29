@@ -59,7 +59,7 @@ class GameScene: SKScene{
         mapNode.position = CGPoint(x: 0, y: 0)
         
         // init Starting Location
-        initLocation = CGPoint(x: 0, y: mapNode.position.y + (mapNode.size.height/2) - (mapNode.size.height * 0.1))
+        initLocation = CGPoint(x: 0, y: mapNode.position.y + (mapNode.size.height/2) - (mapNode.size.height * 0.1) + 100)
 //        initLocation = CGPoint(x: 0, y: mapNode.position.y)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
@@ -204,11 +204,11 @@ class GameScene: SKScene{
         
         movePlayer(dx: gyro.x, dy: gyro.y)
         
-        if portalNode != nil {
-            if(isInPortalFrame(portalNode: portalNode, objectNode: playerNode)){
-                throwPlayerInsidePortalEvent()
-            }
-        }
+//        if portalNode != nil {
+//            if(isPlayerAtTheMiddleOfThePortal(portalNode: portalNode, objectNode: playerNode)){
+//                throwPlayerInsidePortalEvent()
+//            }
+//        }
     }
     
     func movePlayer(dx: CGFloat, dy: CGFloat) {
@@ -406,6 +406,12 @@ class GameScene: SKScene{
     }
     
     func playerCollideWithObject(player: SKSpriteNode, object: SKSpriteNode) {
+        if object.name == "Portal" {
+            print("Player collied with portal")
+            throwPlayerInsidePortalEvent()
+            return
+        }
+        
         if object.name == "Bomb"{
             object.removeFromParent()
 //            print("Hit Bomb")
@@ -428,6 +434,7 @@ class GameScene: SKScene{
             }
         }
         
+        
         animateGettingHurt()
         
     }
@@ -436,9 +443,16 @@ class GameScene: SKScene{
 //        print("trigger spawn portal")
         // Create the portal node
         portalNode = SKSpriteNode(imageNamed: "Portal 1")
-        portalNode.size = CGSize(width: 350, height: 450)
+        portalNode.name = "Portal"
+        portalNode.size = CGSize(width: 150, height: 250)
         
         portalNode.position = generatePortalPosition(portalNode: portalNode, section3LimitNode: section3LimitNode)
+        //setup player physics
+        portalNode.physicsBody = SKPhysicsBody(rectangleOf: portalNode.size)
+        portalNode.physicsBody?.isDynamic = true
+        portalNode.physicsBody?.categoryBitMask = PhysicsCategory.bomb
+        portalNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        portalNode.physicsBody?.collisionBitMask = PhysicsCategory.none
         
         addChild(portalNode)
         
@@ -559,11 +573,11 @@ extension GameScene: SKPhysicsContactDelegate {
         
         let portalCenter = portalNode.position
         let radius = portalNode.size.width / 2
-        var spiralRadius = radius * 0.5
+        var spiralRadius = radius * 1
         let spiralAngle = CGFloat.pi * 2
         
         for i in 0...30 {
-            let angle = spiralAngle * CGFloat(i) / 30
+            let angle = spiralAngle * CGFloat(i) / 45
             let x = portalCenter.x + cos(angle) * spiralRadius
             let y = portalCenter.y + sin(angle) * spiralRadius
             spiralPath.addLine(to: CGPoint(x: x, y: y))
@@ -575,17 +589,15 @@ extension GameScene: SKPhysicsContactDelegate {
         let followPathAction = SKAction.follow(spiralPath.cgPath, asOffset: false, orientToPath: true, duration: 2)
         let fadeOutAction = SKAction.fadeOut(withDuration: 2)
         let removeAction = SKAction.removeFromParent()
+        let setGameToFinishState = SKAction.run {
+            self.gameFinish = true
+            print("Game finish? \(self.gameFinish)")
+        }
         
         // animation sequence
-        let sequenceAction = SKAction.sequence([followPathAction, fadeOutAction, removeAction])
-    
-        // wait for one second after entering the portal
-        let delayAction = SKAction.wait(forDuration: 1)
-        let setGameFinishAction = SKAction.run {
-            self.gameFinish = true
-        }
-        let finalSequenceAction = SKAction.sequence([sequenceAction, delayAction, setGameFinishAction])
-        playerNode.run(finalSequenceAction)
+        let sequenceAction = SKAction.sequence([followPathAction, fadeOutAction, removeAction, setGameToFinishState])
+        playerNode.run(sequenceAction)
+        
     }
     
     func throwGameOverEvent(){
@@ -595,6 +607,7 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     func throwPlayerInsidePortalEvent(){
+        cameraNode.position = portalNode.position
         userEnteredThePortal = true
         sharkTraps = false
         removeBombsFromSection3()

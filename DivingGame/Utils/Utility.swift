@@ -47,8 +47,24 @@ func isInPortalFrame(portalNode : SKSpriteNode, objectNode : SKSpriteNode) -> Bo
 //    print("portal size : \(portalNode.size)\n\n")
 //
 //    print("bomb : \(bombNode.position)")
-    if (( abs(objectNode.position.x) >= (abs(portalNode.frame.minX) - 350) && abs(objectNode.position.x) <= (abs(portalNode.frame.maxX)) + 350) && ( abs(objectNode.position.y) >= (abs(portalNode.frame.minY) - 450) && abs(objectNode.position.y) <= (abs(portalNode.frame.maxY)) + 450)){
+    if (( abs(objectNode.position.x) >= (abs(portalNode.frame.minX) - 100) && abs(objectNode.position.x) <= (abs(portalNode.frame.maxX)) + 100) && ( abs(objectNode.position.y) >= (abs(portalNode.frame.minY) - 200) && abs(objectNode.position.y) <= (abs(portalNode.frame.maxY)) + 200)){
         return true
     }
     return false
 }
+
+//func isPlayerAtTheMiddleOfThePortal(portalNode : SKSpriteNode, objectNode : SKSpriteNode) -> Bool{
+//    if objectNode.position == portalNode.position {
+//        return true
+//    }
+//    return false
+//}
+
+//func isPlayerAtTheMiddleOfThePortal(portalNode : SKSpriteNode, objectNode : SKSpriteNode) -> Bool{
+//    let widthHitBoxConstant: CGFloat = 100
+//    let heightHitBoxConstant: CGFloat = 300
+//    if (( abs(objectNode.position.x) >= (abs(portalNode.frame.minX) - widthHitBoxConstant) && abs(objectNode.position.x) <= (abs(portalNode.frame.maxX)) + widthHitBoxConstant) && ( abs(objectNode.position.y) >= (abs(portalNode.frame.minY) - heightHitBoxConstant) && abs(objectNode.position.y) <= (abs(portalNode.frame.maxY)) + heightHitBoxConstant)){
+//        return true
+//    }
+//    return false
+//}

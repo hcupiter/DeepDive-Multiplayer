@@ -471,30 +471,6 @@ class GameScene: SKScene{
         // Apply the animation to the portal node
         portalNode.run(SKAction.repeatForever(animatePortalAction),withKey: "PortalAnimation")
     }
-}
-
-extension GameScene: SKPhysicsContactDelegate {
-    func didBegin(_ contact: SKPhysicsContact) {
-        // get collided objects
-        var firstBody: SKPhysicsBody
-        var secondBody: SKPhysicsBody
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        } else {
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        // define the collided object
-        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.player == 0)) {
-            if let player = firstBody.node as? SKSpriteNode,
-               let object = secondBody.node as? SKSpriteNode {
-                playerCollideWithObject(player: player, object: object)
-            }
-        }
-    }
     
     func runHapticOnBackgroundScene(_ currentTime: TimeInterval) {
         if lastHapticTime == nil {
@@ -616,4 +592,28 @@ extension GameScene: SKPhysicsContactDelegate {
         animateEnterPortal()
     }
     
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        // get collided objects
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        // define the collided object
+        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.player == 0)) {
+            if let player = firstBody.node as? SKSpriteNode,
+               let object = secondBody.node as? SKSpriteNode {
+                playerCollideWithObject(player: player, object: object)
+            }
+        }
+    }
 }

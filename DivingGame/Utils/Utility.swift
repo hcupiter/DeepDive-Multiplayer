@@ -15,7 +15,7 @@ func getRandomString() -> String {
 }
 
 func random() -> CGFloat {
-  return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+  return CGFloat(Double(arc4random()) / 0xFFFFFFFF)
 }
 
 func random(min: CGFloat, max: CGFloat) -> CGFloat {
@@ -47,7 +47,7 @@ func isInPortalFrame(portalNode : SKSpriteNode, objectNode : SKSpriteNode) -> Bo
 //    print("portal size : \(portalNode.size)\n\n")
 //
 //    print("bomb : \(bombNode.position)")
-    if (( abs(objectNode.position.x) >= (abs(portalNode.frame.minX) - 100) && abs(objectNode.position.x) <= (abs(portalNode.frame.maxX)) + 100) && ( abs(objectNode.position.y) >= (abs(portalNode.frame.minY) - 200) && abs(objectNode.position.y) <= (abs(portalNode.frame.maxY)) + 200)){
+    if (( abs(objectNode.position.x) >= (abs(portalNode.frame.minX) - portalNode.frame.width) && abs(objectNode.position.x) <= (abs(portalNode.frame.maxX)) + portalNode.frame.width) && ( abs(objectNode.position.y) >= (abs(portalNode.frame.minY) - portalNode.frame.height) && abs(objectNode.position.y) <= (abs(portalNode.frame.maxY)) + portalNode.frame.height)){
         return true
     }
     return false

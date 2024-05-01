@@ -22,7 +22,7 @@ struct ContentView: View {
             )
         )
         _matchManager = StateObject(
-            wrappedValue: MatchManager()
+            wrappedValue: MatchManager(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         )
     }
     
@@ -67,6 +67,9 @@ struct ContentView: View {
                     MultiplayerLobbyView()
                         .environmentObject(connectionManager)
                         .environmentObject(matchManager)
+                        .onAppear(){
+                            connectionManager.listAvailablePeers = []
+                        }
                 }
             }
         }

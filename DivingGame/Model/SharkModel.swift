@@ -8,6 +8,10 @@
 import Foundation
 import SpriteKit
 
-class SharkModel: SKSpriteNode {
+class SharkModel {
+    var sharkSpawnInterval: CGFloat
     
+    init(){
+        sharkSpawnInterval = 1
+    }
 }

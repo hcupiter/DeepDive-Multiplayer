@@ -19,13 +19,13 @@ struct MPPeersView: View {
             List(connectionManager.listAvailablePeers, id: \.self){ peer in
                 Button(action: {
                     connectionManager.nearbyServiceBrowser.invitePeer(
-                        peer, 
+                        peer,
                         to: connectionManager.session,
                         withContext: nil,
                         timeout: 30
                     )
-                    matchManager.player1 = connectionManager.myPeerId.displayName
-                    matchManager.player2 = peer.displayName
+                    matchManager.player1Id = connectionManager.myPeerId.displayName
+                    matchManager.player2Id = peer.displayName
                 }, label: {
                     HStack {
                         Image(systemName: "person")
@@ -33,21 +33,25 @@ struct MPPeersView: View {
                     }
                 })
                 .alert("Received invitation from \(connectionManager.receivedInviteFrom?.displayName ?? "Unknown")", isPresented: $connectionManager.receivedInvite) {
-                    Button("Reject") {
+                    Button(action: {
                         if let invitationHandler = connectionManager.invitationHandler {
                             invitationHandler(false, nil)
                         }
-                    }
+                    }, label: {
+                        Text("Reject")
+                    })
                     .foregroundStyle(Color.red)
                     .tint(Color.red)
                     
-                    Button("Accept") {
+                    Button(action: {
                         if let invitationHandler = connectionManager.invitationHandler {
                             invitationHandler(true, connectionManager.session)
-                            matchManager.player1 = connectionManager.receivedInviteFrom?.displayName ?? "Unknown"
-                            matchManager.player2 = connectionManager.myPeerId.displayName
+                            matchManager.player1Id = connectionManager.receivedInviteFrom?.displayName ?? "Unknown"
+                            matchManager.player2Id = connectionManager.myPeerId.displayName
                         }
-                    }
+                    }, label: {
+                        Text("Accept")
+                    })
                 }
             }
         })

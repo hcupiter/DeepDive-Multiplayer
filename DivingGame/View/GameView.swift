@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct GameView: View {
     @EnvironmentObject var connectionManager: MPConnectionManager
@@ -13,10 +14,18 @@ struct GameView: View {
     
     var body: some View {
         VStack {
-            Text("player1: \(matchManager.player1)")
-            Text("player2: \(matchManager.player2)")
+            SpriteView(scene: matchManager)
+//                .onReceive(gameScene.$currentOxygenLevel, perform: { _ in
+//                    currentOxygen = gameScene.currentOxygenLevel
+//                })
+//                .onReceive(gameScene.$gameFinish, perform: { _ in
+//                    isGameFinished = true
+//                })
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear(){
+            matchManager.playerPeerId = connectionManager.myPeerId.displayName
+        }
         
     }
 }

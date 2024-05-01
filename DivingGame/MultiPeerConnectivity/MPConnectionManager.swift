@@ -83,6 +83,7 @@ class MPConnectionManager: NSObject, ObservableObject {
     
     func setupGame(matchManager: MatchManager){
         self.matchManager = matchManager
+        self.matchManager.connectionManager = self
     }
     
     func send(gameEvent: MPGameEvent){
@@ -158,7 +159,7 @@ extension MPConnectionManager: MCSessionDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         if let gameEvent = try? JSONDecoder().decode(MPGameEvent.self, from: data) {
             DispatchQueue.main.async {
-                self.matchManager.handleEvent(gameEvent: gameEvent, mpConnectionManager: self)                
+                self.matchManager.handleGameEvent(gameEvent: gameEvent, connectionManager: self)
             }
         }
     }

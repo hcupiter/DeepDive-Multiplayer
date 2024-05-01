@@ -37,7 +37,7 @@ class SharkModel {
         
         //shark Y coordinate spawn location
         let sharkYPositon = random(
-            min: matchManager.section2LimitNode.position.y - sharkNode.size.height,
+            min: matchManager.section2LimitNode.position.y + 100 - sharkNode.size.height,
             max: mapBottomSide + sharkNode.size.height
         )
         let sharkXPosition = directionRight ? mapLeftSide - sharkNode.size.width : mapRightSide + sharkNode.size.width

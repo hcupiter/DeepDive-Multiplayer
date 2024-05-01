@@ -12,18 +12,18 @@ class PlayerModel: ObservableObject {
     @Published var id: String
     @Published var playerNode: SKSpriteNode
     var cameraNode: SKCameraNode
-    var playerOxygen: Oxygen
+    @Published var playerOxygen: Oxygen
     var mapNode: SKSpriteNode
     var teamBox: SKSpriteNode!
     var playerInitLocation: CGPoint! // to saves spawn location
     
     init(id: String, initLocation: CGPoint, mapNode: SKSpriteNode, matchManager: MatchManager){
         self.id = id
-        self.playerOxygen = Oxygen()
+        self.playerOxygen = Oxygen(matchManager: matchManager)
         self.mapNode = mapNode
         cameraNode = SKCameraNode()
         cameraNode.position = initLocation
-        cameraNode.setScale(1.5)
+        cameraNode.setScale(5)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation
@@ -73,7 +73,6 @@ class PlayerModel: ObservableObject {
         
         var movementY = dy
         if movementY < 0 {
-            playerOxygen.playerOxygenLevel += 1
             movementY *= 2
         }
         else if movementY > 0.3 {
@@ -104,30 +103,64 @@ class PlayerModel: ObservableObject {
         }
         
         cameraNode.position = playerNode.position
-        teamBox.position.x = playerNode.position.x
-        teamBox.position.y = playerNode.position.y + 75
+        setTeamBoxPositionToPlayer()
         
         // send updates to other devices
         let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
         connectionManager.send(playerEvent: playerEvent)
     }
     
+    func throwPlayerDeathEvent(connectionManager: MPConnectionManager){
+        playerNode.position = playerInitLocation
+        // send updates to other devices
+        let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
+        connectionManager.send(playerEvent: playerEvent)
+        
+    }
+    
     func movePlayerByPosition(pos: CGPoint){
         playerNode.position = pos
+        setTeamBoxPositionToPlayer()
+    }
+    
+    func setTeamBoxPositionToPlayer(){
         teamBox.position.x = playerNode.position.x
         teamBox.position.y = playerNode.position.y + 75
     }
 
 }
 
-class Oxygen {
-    var playerOxygenLevel: CGFloat
+class Oxygen: ObservableObject {
+    var matchManager: MatchManager
+    @Published var playerOxygenLevel: CGFloat
     let maxOxygenLevel: CGFloat = 100
     var oxygenDecreaseInterval: CGFloat
     var lastSavedOxygenTime: CGFloat!
     
-    init(){
+    init(matchManager: MatchManager){
         playerOxygenLevel = 100
         oxygenDecreaseInterval = 1.5
+        self.matchManager = matchManager
+    }
+    
+    // will return false if the oxygen is 0
+    func decreaseOxygen(_ currentTime: TimeInterval) -> Bool{
+        if playerOxygenLevel <= 0 {
+            return false
+        }
+        
+        if lastSavedOxygenTime == nil {
+            lastSavedOxygenTime = currentTime
+        }
+        else {
+            // should decrease the oxygen level based on set interval and if the game isn't finished
+            if abs(lastSavedOxygenTime - currentTime) >= oxygenDecreaseInterval && matchManager.isGameFinish == false{
+                if playerOxygenLevel > 0 {
+                    playerOxygenLevel -= 1
+                    lastSavedOxygenTime = nil
+                }
+            }
+        }
+        return true
     }
 }

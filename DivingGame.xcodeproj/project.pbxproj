@@ -28,6 +28,7 @@
 		3AE032972BE20CBC00CEFAFF /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032962BE20CBC00CEFAFF /* HapticManager.swift */; };
 		3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032982BE20F6F00CEFAFF /* Tools.swift */; };
 		3AE0329B2BE2152E00CEFAFF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329A2BE2152E00CEFAFF /* MapModel.swift */; };
+		3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3AE032962BE20CBC00CEFAFF /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		3AE032982BE20F6F00CEFAFF /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		3AE0329A2BE2152E00CEFAFF /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		3AE032782BE0D5AB00CEFAFF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3AE0329C2BE274FE00CEFAFF /* Components */,
 				3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */,
 				3AE0328A2BE101CC00CEFAFF /* GameView.swift */,
 				3AE032922BE1380200CEFAFF /* MPPeersView.swift */,
@@ -166,6 +169,14 @@
 				3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */,
 			);
 			path = MultiPeerConnectivity;
+			sourceTree = "<group>";
+		};
+		3AE0329C2BE274FE00CEFAFF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 				3AE0327D2BE0D64E00CEFAFF /* Constants.swift in Sources */,
 				3AE032832BE0D7C800CEFAFF /* BombModel.swift in Sources */,
 				3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */,
+				3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */,
 				3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */,
 				3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */,
 				3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */,

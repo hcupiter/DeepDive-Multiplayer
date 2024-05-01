@@ -13,13 +13,14 @@ import MultipeerConnectivity
 class MatchManager: SKScene, ObservableObject{
     // things that is shared between players
     @Published var inGame: Int!
-    @Published var isGameFinish: Bool!
+    @Published var isGameFinish: Bool = false
     @Published var playerHasEnteredAPortal: Bool!
     
     @Published var portal: PortalModel!
     
     @Published var playerPeerId: String!
     @Published var controlledPlayer: PlayerModel!
+    @Published var controlledPlayerOxygen: CGFloat = 100
     
     @Published var player1Id: String!
     @Published var player1Model: PlayerModel!
@@ -71,13 +72,23 @@ class MatchManager: SKScene, ObservableObject{
     
     // this function will run every frame
     override func update(_ currentTime: TimeInterval) {
-        // move player
-        self.controlledPlayer.movePlayerByGyro(dx: self.gyro.x, dy: self.gyro.y, connectionManager: self.connectionManager)
-        
         // spawn shark if it's player 1 or the host
         if isTheHost {
             sharkModel.spawnSharkWithinInterval(currentTime: currentTime)
             bombModel.spawnBomb()
+        }
+        
+        // move player
+        self.controlledPlayer.movePlayerByGyro(dx: self.gyro.x, dy: self.gyro.y, connectionManager: self.connectionManager)
+        self.controlledPlayerOxygen = self.controlledPlayer.playerOxygen.playerOxygenLevel // this to change the value of player oxygen
+                
+        // check player's zone
+        runZoneBehavior()
+        
+        // decrease player oxygen
+        let tryDecreaseOxygen = self.controlledPlayer.playerOxygen.decreaseOxygen(currentTime)
+        if(tryDecreaseOxygen == false){
+            self.controlledPlayer.throwPlayerDeathEvent(connectionManager: connectionManager)
         }
         
     }
@@ -93,7 +104,7 @@ class MatchManager: SKScene, ObservableObject{
         
         sceneHeight = SKLabelNode(text: "height : \(size.height)")
         sceneHeight.position = CGPoint(x: size.width/2, y: size.height/2 - 100)
-        map = MapModel()
+        map = MapModel(matchManager: self)
         
         section2LimitNode = SKSpriteNode(color: UIColor.red, size: CGSize(width: map.mapNode.size.width, height: 10))
         section2LimitNode.position = CGPoint(x: 0, y: section2)
@@ -137,6 +148,7 @@ class MatchManager: SKScene, ObservableObject{
             self.controlledPlayer = player2Model
         }
         self.camera = controlledPlayer.cameraNode
+        self.controlledPlayerOxygen = controlledPlayer.playerOxygen.playerOxygenLevel
     }
     
     func moveFoePlayer(foeId: String, foePosition: CGPoint) {
@@ -145,6 +157,21 @@ class MatchManager: SKScene, ObservableObject{
         }
         else {
             player2Model.movePlayerByPosition(pos: foePosition)
+        }
+    }
+    
+    func runZoneBehavior(){
+        // zone 1 behavior
+        if(map.checkIfPlayerInZone1(player: controlledPlayer)){
+            controlledPlayer.playerOxygen.oxygenDecreaseInterval = 1.5
+        }
+        // zone 2 behavior
+        else if(map.checkIfPlayerInZone2(player: controlledPlayer)){
+            controlledPlayer.playerOxygen.oxygenDecreaseInterval = 1
+        }
+        // zone 3 behavior
+        else if(map.checkIfPlayerInZone3(player: controlledPlayer)){
+            controlledPlayer.playerOxygen.oxygenDecreaseInterval = 0.5
         }
     }
     

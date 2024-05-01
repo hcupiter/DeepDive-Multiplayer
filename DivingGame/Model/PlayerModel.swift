@@ -32,10 +32,12 @@ class PlayerModel: ObservableObject {
         if(self.id == matchManager.player1Id){
             playerInitLocation.x = initLocation.x - 50
             playerNode.position.x -= 50
+            playerNode.name = "Player1"
         }
         else {
             playerInitLocation.x = initLocation.x + 50
             playerNode.position.x += 50
+            playerNode.name = "Player2"
         }
         
         // init team flag
@@ -112,10 +114,24 @@ class PlayerModel: ObservableObject {
     
     func throwPlayerDeathEvent(connectionManager: MPConnectionManager){
         playerNode.position = playerInitLocation
+        playerOxygen.playerOxygenLevel = playerOxygen.maxOxygenLevel
         // send updates to other devices
         let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
         connectionManager.send(playerEvent: playerEvent)
-        
+    }
+    
+    func animateGettingHurt(){
+        let delayAction = SKAction.wait(forDuration: 0.1)
+        let animation1 = SKAction.run {
+            self.playerNode.texture = SKTexture(imageNamed: "diverHit")
+            self.playerNode.setScale(1.1)
+        }
+        let animation2 = SKAction.run {
+            self.playerNode.setScale(1)
+            self.playerNode.texture = SKTexture(imageNamed: "diverDefault")
+        }
+        let sequenceAction = SKAction.sequence([animation1, delayAction, animation2])
+        playerNode.run(sequenceAction)
     }
     
     func movePlayerByPosition(pos: CGPoint){

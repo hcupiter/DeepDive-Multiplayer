@@ -81,7 +81,7 @@ class MatchManager: SKScene, ObservableObject{
         // move player
         self.controlledPlayer.movePlayerByGyro(dx: self.gyro.x, dy: self.gyro.y, connectionManager: self.connectionManager)
         self.controlledPlayerOxygen = self.controlledPlayer.playerOxygen.playerOxygenLevel // this to change the value of player oxygen
-                
+        
         // check player's zone
         runZoneBehavior()
         
@@ -192,7 +192,12 @@ class MatchManager: SKScene, ObservableObject{
             connectionManager.session.disconnect()
             
         case .hit:
-            print("Got hit")
+            if playerEvent.playerId == player1Id {
+                player1Model.animateGettingHurt()
+            }
+            else {
+                player2Model.animateGettingHurt()
+            }
             
         case .death:
             print("death")
@@ -233,10 +238,15 @@ extension MatchManager: SKPhysicsContactDelegate {
             (secondBody.categoryBitMask & PhysicsCategory.player2 != 0)) {
             // player 1 collided with player 2
             handlePlayerCollision(player1: firstBody.node as? SKSpriteNode, player2: secondBody.node as? SKSpriteNode)
-        } else if ((firstBody.categoryBitMask & PhysicsCategory.player2 != 0) &&
-                   (secondBody.categoryBitMask & PhysicsCategory.player1 != 0)) {
+        }
+        else if ((firstBody.categoryBitMask & PhysicsCategory.player2 != 0) &&
+                 (secondBody.categoryBitMask & PhysicsCategory.player1 != 0)) {
             // player 2 collided with player 1
             handlePlayerCollision(player1: secondBody.node as? SKSpriteNode, player2: firstBody.node as? SKSpriteNode)
+        }
+        else if let player = firstBody.node as? SKSpriteNode,
+                            let object = secondBody.node as? SKSpriteNode {
+            playerCollideWithObject(player: player, object: object)
         }
     }
     
@@ -247,6 +257,51 @@ extension MatchManager: SKPhysicsContactDelegate {
             player1.physicsBody?.applyImpulse(repelForce)
             player2.physicsBody?.applyImpulse(repelForce)
         }
+    }
+    
+    func playerCollideWithObject(player: SKSpriteNode, object: SKSpriteNode) {
+        if isGameFinish == true {
+            return
+        }
+        
+        if object.name == "Portal" {
+            print("Player collied with portal")
+//            throwPlayerInsidePortalEvent()
+            return
+        }
+        
+        if object.name == "Bomb"{
+            // logic when hit bomb
+            object.removeFromParent()
+            bombModel.bombSpawnedCount -= 1
+            
+            if player.name == controlledPlayer.playerNode.name {
+                HapticUtils.runHapticOnHitBomb()
+                self.controlledPlayer.playerOxygen.playerOxygenLevel -= 50
+                self.controlledPlayerOxygen = self.controlledPlayer.playerOxygen.playerOxygenLevel
+                self.controlledPlayer.animateGettingHurt()
+                
+                // send game event to other person
+                let playerEvent = MPPlayerEvent(action: .hit, playerId: controlledPlayer.id, playerPosition: controlledPlayer.playerNode.position)
+                connectionManager.send(playerEvent: playerEvent)
+            }
+        }
+        else if object.name == "Shark"{
+            // logic when hit shark
+            if player.name == controlledPlayer.playerNode.name {
+                HapticUtils.runHapticOnHitShark()
+                self.controlledPlayer.playerOxygen.playerOxygenLevel -= 25
+                self.controlledPlayerOxygen = self.controlledPlayer.playerOxygen.playerOxygenLevel
+                self.controlledPlayer.animateGettingHurt()
+                
+                // send game event to other person
+                let playerEvent = MPPlayerEvent(action: .hit, playerId: controlledPlayer.id, playerPosition: controlledPlayer.playerNode.position)
+                connectionManager.send(playerEvent: playerEvent)
+            }
+        }
+        
+        
+
     }
 }
 

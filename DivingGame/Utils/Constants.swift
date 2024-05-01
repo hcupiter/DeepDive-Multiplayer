@@ -30,10 +30,11 @@ let portalImage = ["Portal 1","Portal 2", "Portal 3", "Portal 4", "Portal 5", "P
 struct PhysicsCategory {
     static let none : UInt32 = 0
     static let all : UInt32 = UInt32.max
-    static let player : UInt32 = 0b1
-    static let shark : UInt32 = 0b10
-    static let bomb: UInt32 = 0b100
-    static let portal: UInt32 = 0b1000
+    static let player1 : UInt32 = 0b1
+    static let player2: UInt32 = 0b10
+    static let shark : UInt32 = 0b100
+    static let bomb: UInt32 = 0b1000
+    static let portal: UInt32 = 0b10000
 }
 
 

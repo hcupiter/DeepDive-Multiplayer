@@ -22,7 +22,7 @@ class PortalModel {
         portalNode.physicsBody = SKPhysicsBody(rectangleOf: portalNode.size)
         portalNode.physicsBody?.isDynamic = true
         portalNode.physicsBody?.categoryBitMask = PhysicsCategory.portal
-        portalNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        portalNode.physicsBody?.contactTestBitMask = PhysicsCategory.player1 | PhysicsCategory.player2
         portalNode.physicsBody?.collisionBitMask = PhysicsCategory.none
         
         // Create an array to hold SKTexture objects

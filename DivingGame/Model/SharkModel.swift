@@ -14,7 +14,7 @@ class SharkModel {
     var matchManager: MatchManager!
     
     init(matchManager: MatchManager){
-        sharkSpawnInterval = 0.5
+        sharkSpawnInterval = 1
         self.matchManager = matchManager
     }
     
@@ -47,10 +47,14 @@ class SharkModel {
         
         //setup shark physics
         sharkNode.physicsBody = SKPhysicsBody(rectangleOf: sharkNode.size) // 1
-        sharkNode.physicsBody?.isDynamic = true // 2
-        sharkNode.physicsBody?.categoryBitMask = PhysicsCategory.shark // 3
-        sharkNode.physicsBody?.contactTestBitMask = PhysicsCategory.player // 4
-        sharkNode.physicsBody?.collisionBitMask = PhysicsCategory.player // 5
+        // Sets the isDynamic property of the physics body to true, which means that the shark node will be affected by forces and collisions.
+        sharkNode.physicsBody?.isDynamic = true
+        // Sets the categoryBitMask of the physics body to PhysicsCategory.shark, which is used to identify the shark node in collision detection.
+        sharkNode.physicsBody?.categoryBitMask = PhysicsCategory.shark
+        //Sets the contactTestBitMask of the physics body to PhysicsCategory.player1 | PhysicsCategory.player2, which means that the shark node will be notified of collisions with both player1 and player2 nodes.
+        sharkNode.physicsBody?.contactTestBitMask = PhysicsCategory.player1 | PhysicsCategory.player2 // 4
+        // Sets the collisionBitMask of the physics body to PhysicsCategory.player1 | PhysicsCategory.player2, which means that the shark node will actually collide with both player1 and player2 nodes.
+        sharkNode.physicsBody?.collisionBitMask = PhysicsCategory.player1 | PhysicsCategory.player2 // 5
         
         matchManager.addChild(sharkNode)
         
@@ -88,8 +92,8 @@ class SharkModel {
         sharkNode.physicsBody = SKPhysicsBody(rectangleOf: sharkNode.size) // 1
         sharkNode.physicsBody?.isDynamic = true // 2
         sharkNode.physicsBody?.categoryBitMask = PhysicsCategory.shark // 3
-        sharkNode.physicsBody?.contactTestBitMask = PhysicsCategory.player // 4
-        sharkNode.physicsBody?.collisionBitMask = PhysicsCategory.player // 5
+        sharkNode.physicsBody?.contactTestBitMask = PhysicsCategory.player1 | PhysicsCategory.player2 // 4
+        sharkNode.physicsBody?.collisionBitMask = PhysicsCategory.player1 | PhysicsCategory.player2 // 5
         
         matchManager.addChild(sharkNode)
         

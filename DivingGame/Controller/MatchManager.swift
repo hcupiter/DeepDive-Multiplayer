@@ -111,8 +111,8 @@ class MatchManager: SKScene, ObservableObject{
         
         portal = PortalModel(section3LimitNode: section3LimitNode)
         
-        player1Model = PlayerModel(id: player1Id, initLocation: map.initLocation, mapNode: map.mapNode)
-        player2Model = PlayerModel(id: player2Id, initLocation: map.initLocation , mapNode: map.mapNode)
+        player1Model = PlayerModel(id: player1Id, initLocation: map.initLocation, mapNode: map.mapNode, matchManager: self)
+        player2Model = PlayerModel(id: player2Id, initLocation: map.initLocation , mapNode: map.mapNode, matchManager: self)
         
         sharkTraps = true
         sharkModel = SharkModel(matchManager: self)
@@ -198,15 +198,24 @@ extension MatchManager: SKPhysicsContactDelegate {
         }
         
         // define the collided object
-        if ((firstBody.categoryBitMask & PhysicsCategory.player != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.player == 0)) {
-            if let player = firstBody.node as? SKSpriteNode,
-               let object = secondBody.node as? SKSpriteNode {
-                //                playerCollideWithObject(player: player, object: object)
-            }
+        if ((firstBody.categoryBitMask & PhysicsCategory.player1 != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.player2 != 0)) {
+            // player 1 collided with player 2
+            handlePlayerCollision(player1: firstBody.node as? SKSpriteNode, player2: secondBody.node as? SKSpriteNode)
+        } else if ((firstBody.categoryBitMask & PhysicsCategory.player2 != 0) &&
+                   (secondBody.categoryBitMask & PhysicsCategory.player1 != 0)) {
+            // player 2 collided with player 1
+            handlePlayerCollision(player1: secondBody.node as? SKSpriteNode, player2: firstBody.node as? SKSpriteNode)
         }
     }
     
-    
+    func handlePlayerCollision(player1: SKSpriteNode?, player2: SKSpriteNode?) {
+        if let player1 = player1, let player2 = player2 {
+            // Apply a force to both players to repel them away from each other
+            let repelForce = CGVector(dx: -player1.physicsBody!.velocity.dx, dy: -player1.physicsBody!.velocity.dy)
+            player1.physicsBody?.applyImpulse(repelForce)
+            player2.physicsBody?.applyImpulse(repelForce)
+        }
+    }
 }
 

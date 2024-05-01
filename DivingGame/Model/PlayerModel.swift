@@ -14,8 +14,10 @@ class PlayerModel: ObservableObject {
     var cameraNode: SKCameraNode
     var playerOxygen: Oxygen
     var mapNode: SKSpriteNode
+    var teamBox: SKSpriteNode!
+    var playerInitLocation: CGPoint! // to saves spawn location
     
-    init(id: String, initLocation: CGPoint, mapNode: SKSpriteNode){
+    init(id: String, initLocation: CGPoint, mapNode: SKSpriteNode, matchManager: MatchManager){
         self.id = id
         self.playerOxygen = Oxygen()
         self.mapNode = mapNode
@@ -25,16 +27,38 @@ class PlayerModel: ObservableObject {
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation
+        playerInitLocation.y = initLocation.y
+        if(self.id == matchManager.player1Id){
+            playerInitLocation.x = initLocation.x - 50
+            playerNode.position.x -= 50
+        }
+        else {
+            playerInitLocation.x = initLocation.x + 50
+            playerNode.position.x += 50
+        }
+        
+        // init team flag
+        teamBox = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
+        teamBox.position.x = initLocation.x
+        teamBox.position.y = initLocation.y + 200
         
         //setup player physics
         playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
         playerNode.texture = SKTexture(imageNamed: "diverDefault")
         playerNode.physicsBody?.isDynamic = true
-        playerNode.physicsBody?.categoryBitMask = PhysicsCategory.player
-        playerNode.physicsBody?.contactTestBitMask = PhysicsCategory.shark | PhysicsCategory.bomb
-        playerNode.physicsBody?.collisionBitMask = PhysicsCategory.shark
+        if(self.id == matchManager.player1Id){
+            playerNode.physicsBody?.categoryBitMask = PhysicsCategory.player1
+            playerNode.physicsBody?.contactTestBitMask = PhysicsCategory.shark | PhysicsCategory.bomb | PhysicsCategory.player2
+            playerNode.physicsBody?.collisionBitMask = PhysicsCategory.shark | PhysicsCategory.player2
+            teamBox.color = UIColor.red
+        }
+        else {
+            playerNode.physicsBody?.categoryBitMask = PhysicsCategory.player2
+            playerNode.physicsBody?.contactTestBitMask = PhysicsCategory.shark | PhysicsCategory.bomb | PhysicsCategory.player1
+            playerNode.physicsBody?.collisionBitMask = PhysicsCategory.shark | PhysicsCategory.player1
+            teamBox.color = UIColor.blue
+        }
         playerNode.physicsBody?.usesPreciseCollisionDetection = true
-
     }
     
     func movePlayerByGyro(dx: CGFloat, dy: CGFloat, connectionManager: MPConnectionManager){
@@ -67,12 +91,20 @@ class PlayerModel: ObservableObject {
         if newX + playerNode.size.width / 2 <= mapNode.frame.maxX && newX - playerNode.size.width / 2 >= mapNode.frame.minX {
             playerNode.position.x = newX
         }
+        else {
+            playerNode.position = playerInitLocation
+        }
         
         if newY + playerNode.size.height / 2 <= mapNode.frame.maxY && newY - playerNode.size.height / 2 >= mapNode.frame.minY {
             playerNode.position.y = newY
         }
+        else {
+            playerNode.position = playerInitLocation
+        }
         
         cameraNode.position = playerNode.position
+        teamBox.position.x = playerNode.position.x
+        teamBox.position.y = playerNode.position.y + 200
         
         // send updates to other devices
         let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
@@ -81,6 +113,8 @@ class PlayerModel: ObservableObject {
     
     func movePlayerByPosition(pos: CGPoint){
         playerNode.position = pos
+        teamBox.position.x = playerNode.position.x
+        teamBox.position.y = playerNode.position.y + 200
     }
 
 }

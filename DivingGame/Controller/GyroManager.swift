@@ -1,6 +1,6 @@
 //
 //  GyroManager.swift
-//  DivingGame
+//  DeepDive
 //
 //  Created by Hans Arthur Cupiterson on 25/04/24.
 //
@@ -27,6 +27,6 @@ class GyroManager: ObservableObject {
             }
         }
     }
-    
+
     static let shared = GyroManager()
 }

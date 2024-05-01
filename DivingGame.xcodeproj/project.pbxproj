@@ -7,24 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */; };
-		3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4642BDA3DFF0033F7FE /* ContentView.swift */; };
+		3A27552C2BDF461300F47882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755202BDF461300F47882 /* Assets.xcassets */; };
+		3A27552D2BDF461300F47882 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755212BDF461300F47882 /* Preview Assets.xcassets */; };
+		3A2755322BDF461300F47882 /* DivingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755292BDF461300F47882 /* DivingGame.swift */; };
+		3A27553A2BDF468900F47882 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755362BDF468900F47882 /* ContentView.swift */; };
 		3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4662BDA3E000033F7FE /* Assets.xcassets */; };
 		3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */; };
-		3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */; };
-		3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49B2BDA4AD80033F7FE /* GameScene.swift */; };
-		3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92D49D2BDA542D0033F7FE /* ControlButton.swift */; };
+		3AE0327D2BE0D64E00CEFAFF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0327C2BE0D64E00CEFAFF /* Constants.swift */; };
+		3AE0327F2BE0D6D400CEFAFF /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */; };
+		3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032802BE0D79700CEFAFF /* SharkModel.swift */; };
+		3AE032832BE0D7C800CEFAFF /* BombModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032822BE0D7C800CEFAFF /* BombModel.swift */; };
+		3AE032852BE0D7F100CEFAFF /* PortalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032842BE0D7F100CEFAFF /* PortalModel.swift */; };
+		3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */; };
+		3AE032892BE0D9C300CEFAFF /* MultiplayerLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */; };
+		3AE0328B2BE101CC00CEFAFF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0328A2BE101CC00CEFAFF /* GameView.swift */; };
+		3AE0328F2BE110F300CEFAFF /* MPConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */; };
+		3AE032912BE1294800CEFAFF /* MPGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032902BE1294800CEFAFF /* MPGameEvent.swift */; };
+		3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032922BE1380200CEFAFF /* MPPeersView.swift */; };
+		3AE032952BE20BD800CEFAFF /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032942BE20BD800CEFAFF /* GyroManager.swift */; };
+		3AE032972BE20CBC00CEFAFF /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032962BE20CBC00CEFAFF /* HapticManager.swift */; };
+		3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032982BE20F6F00CEFAFF /* Tools.swift */; };
+		3AE0329B2BE2152E00CEFAFF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329A2BE2152E00CEFAFF /* MapModel.swift */; };
+		3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */; };
+		3AE032A02BE28CA500CEFAFF /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329F2BE28CA500CEFAFF /* EndView.swift */; };
+		3AE032A52BE2990C00CEFAFF /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */; };
+		3AE032A72BE2992100CEFAFF /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A62BE2992000CEFAFF /* FrameHandler.swift */; };
+		3AE032AA2BE2994500CEFAFF /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A92BE2994500CEFAFF /* FrameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A2755202BDF461300F47882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A2755212BDF461300F47882 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A2755292BDF461300F47882 /* DivingGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivingGame.swift; sourceTree = "<group>"; };
+		3A2755362BDF468900F47882 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A92D45F2BDA3DFF0033F7FE /* DivingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DivingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivingGameApp.swift; sourceTree = "<group>"; };
-		3A92D4642BDA3DFF0033F7FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A92D4662BDA3E000033F7FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
-		3A92D49B2BDA4AD80033F7FE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		3A92D49D2BDA542D0033F7FE /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
+		3AE0327C2BE0D64E00CEFAFF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
+		3AE032802BE0D79700CEFAFF /* SharkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkModel.swift; sourceTree = "<group>"; };
+		3AE032822BE0D7C800CEFAFF /* BombModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombModel.swift; sourceTree = "<group>"; };
+		3AE032842BE0D7F100CEFAFF /* PortalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalModel.swift; sourceTree = "<group>"; };
+		3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyView.swift; sourceTree = "<group>"; };
+		3AE0328A2BE101CC00CEFAFF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		3AE0328C2BE10FE300CEFAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPConnectionManager.swift; sourceTree = "<group>"; };
+		3AE032902BE1294800CEFAFF /* MPGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPGameEvent.swift; sourceTree = "<group>"; };
+		3AE032922BE1380200CEFAFF /* MPPeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPeersView.swift; sourceTree = "<group>"; };
+		3AE032942BE20BD800CEFAFF /* GyroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
+		3AE032962BE20CBC00CEFAFF /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		3AE032982BE20F6F00CEFAFF /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		3AE0329A2BE2152E00CEFAFF /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
+		3AE0329F2BE28CA500CEFAFF /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
+		3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotView.swift; sourceTree = "<group>"; };
+		3AE032A62BE2992000CEFAFF /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		3AE032A92BE2994500CEFAFF /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2755222BDF461300F47882 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3A2755212BDF461300F47882 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		3A92D4562BDA3DFF0033F7FE = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +104,18 @@
 		3A92D4612BDA3DFF0033F7FE /* DivingGame */ = {
 			isa = PBXGroup;
 			children = (
-				3A92D4702BDA3EE40033F7FE /* Utils */,
-				3A92D4622BDA3DFF0033F7FE /* DivingGameApp.swift */,
-				3A92D4642BDA3DFF0033F7FE /* ContentView.swift */,
+				3AE0328C2BE10FE300CEFAFF /* Info.plist */,
+				3AE0328D2BE1109B00CEFAFF /* MultiPeerConnectivity */,
+				3AE0327B2BE0D5C600CEFAFF /* Utils */,
+				3AE0327A2BE0D5B800CEFAFF /* Controller */,
+				3AE032792BE0D5B100CEFAFF /* Model */,
+				3AE032782BE0D5AB00CEFAFF /* View */,
+				3A2755202BDF461300F47882 /* Assets.xcassets */,
+				3A2755292BDF461300F47882 /* DivingGame.swift */,
+				3A2755362BDF468900F47882 /* ContentView.swift */,
+				3A2755222BDF461300F47882 /* Preview Content */,
 				3A92D4662BDA3E000033F7FE /* Assets.xcassets */,
 				3A92D4682BDA3E000033F7FE /* Preview Content */,
-				3A92D49D2BDA542D0033F7FE /* ControlButton.swift */,
 			);
 			path = DivingGame;
 			sourceTree = "<group>";
@@ -75,21 +128,75 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3A92D4702BDA3EE40033F7FE /* Utils */ = {
+		3AE032782BE0D5AB00CEFAFF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3A92D49A2BDA4AC40033F7FE /* SpriteKit */,
-				3A92D4712BDA3EFA0033F7FE /* GyroManager.swift */,
+				3AE0329C2BE274FE00CEFAFF /* Components */,
+				3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */,
+				3AE0328A2BE101CC00CEFAFF /* GameView.swift */,
+				3AE032922BE1380200CEFAFF /* MPPeersView.swift */,
+				3AE0329F2BE28CA500CEFAFF /* EndView.swift */,
+				3AE032A82BE2992600CEFAFF /* Screenshot */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3AE032792BE0D5B100CEFAFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032802BE0D79700CEFAFF /* SharkModel.swift */,
+				3AE032822BE0D7C800CEFAFF /* BombModel.swift */,
+				3AE032842BE0D7F100CEFAFF /* PortalModel.swift */,
+				3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */,
+				3AE0329A2BE2152E00CEFAFF /* MapModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3AE0327A2BE0D5B800CEFAFF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */,
+				3AE032942BE20BD800CEFAFF /* GyroManager.swift */,
+				3AE032962BE20CBC00CEFAFF /* HapticManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3AE0327B2BE0D5C600CEFAFF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0327C2BE0D64E00CEFAFF /* Constants.swift */,
+				3AE032982BE20F6F00CEFAFF /* Tools.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		3A92D49A2BDA4AC40033F7FE /* SpriteKit */ = {
+		3AE0328D2BE1109B00CEFAFF /* MultiPeerConnectivity */ = {
 			isa = PBXGroup;
 			children = (
-				3A92D49B2BDA4AD80033F7FE /* GameScene.swift */,
+				3AE032902BE1294800CEFAFF /* MPGameEvent.swift */,
+				3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */,
 			);
-			path = SpriteKit;
+			path = MultiPeerConnectivity;
+			sourceTree = "<group>";
+		};
+		3AE0329C2BE274FE00CEFAFF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3AE032A82BE2992600CEFAFF /* Screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */,
+				3AE032A62BE2992000CEFAFF /* FrameHandler.swift */,
+				3AE032A92BE2994500CEFAFF /* FrameView.swift */,
+			);
+			path = Screenshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +231,7 @@
 				TargetAttributes = {
 					3A92D45E2BDA3DFF0033F7FE = {
 						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -150,7 +258,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A27552D2BDF461300F47882 /* Preview Assets.xcassets in Resources */,
 				3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */,
+				3A27552C2BDF461300F47882 /* Assets.xcassets in Resources */,
 				3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,11 +272,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A92D4652BDA3DFF0033F7FE /* ContentView.swift in Sources */,
-				3A92D4722BDA3EFA0033F7FE /* GyroManager.swift in Sources */,
-				3A92D49E2BDA542D0033F7FE /* ControlButton.swift in Sources */,
-				3A92D49C2BDA4AD80033F7FE /* GameScene.swift in Sources */,
-				3A92D4632BDA3DFF0033F7FE /* DivingGameApp.swift in Sources */,
+				3AE032A52BE2990C00CEFAFF /* ScreenshotView.swift in Sources */,
+				3AE0328F2BE110F300CEFAFF /* MPConnectionManager.swift in Sources */,
+				3AE032972BE20CBC00CEFAFF /* HapticManager.swift in Sources */,
+				3AE0327D2BE0D64E00CEFAFF /* Constants.swift in Sources */,
+				3AE032832BE0D7C800CEFAFF /* BombModel.swift in Sources */,
+				3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */,
+				3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */,
+				3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */,
+				3AE032AA2BE2994500CEFAFF /* FrameView.swift in Sources */,
+				3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */,
+				3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */,
+				3AE032952BE20BD800CEFAFF /* GyroManager.swift in Sources */,
+				3AE032912BE1294800CEFAFF /* MPGameEvent.swift in Sources */,
+				3AE0328B2BE101CC00CEFAFF /* GameView.swift in Sources */,
+				3AE032A02BE28CA500CEFAFF /* EndView.swift in Sources */,
+				3AE032892BE0D9C300CEFAFF /* MultiplayerLobbyView.swift in Sources */,
+				3AE0329B2BE2152E00CEFAFF /* MapModel.swift in Sources */,
+				3AE0327F2BE0D6D400CEFAFF /* MatchManager.swift in Sources */,
+				3A2755322BDF461300F47882 /* DivingGame.swift in Sources */,
+				3AE032852BE0D7F100CEFAFF /* PortalModel.swift in Sources */,
+				3A27553A2BDF468900F47882 /* ContentView.swift in Sources */,
+				3AE032A72BE2992100CEFAFF /* FrameHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,17 +424,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DivingGame/Preview Content\"";
 				DEVELOPMENT_TEAM = SW8FY3LA3R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DivingGame/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would like to play Diving Game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,6 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appledevacad.test.divingGame.DivingGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -326,17 +456,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DivingGame/Preview Content\"";
 				DEVELOPMENT_TEAM = SW8FY3LA3R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DivingGame/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would like to play Diving Game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

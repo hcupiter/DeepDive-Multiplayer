@@ -9,44 +9,43 @@
 /* Begin PBXBuildFile section */
 		3A27552C2BDF461300F47882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755202BDF461300F47882 /* Assets.xcassets */; };
 		3A27552D2BDF461300F47882 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2755212BDF461300F47882 /* Preview Assets.xcassets */; };
-		3A27552E2BDF461300F47882 /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755232BDF461300F47882 /* FrameHandler.swift */; };
-		3A27552F2BDF461300F47882 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755242BDF461300F47882 /* FrameView.swift */; };
-		3A2755302BDF461300F47882 /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755252BDF461300F47882 /* ScreenshotView.swift */; };
-		3A2755312BDF461300F47882 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755272BDF461300F47882 /* StoryView.swift */; };
 		3A2755322BDF461300F47882 /* DivingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755292BDF461300F47882 /* DivingGame.swift */; };
-		3A2755332BDF461300F47882 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27552A2BDF461300F47882 /* Haptic.swift */; };
-		3A2755382BDF468900F47882 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755342BDF468900F47882 /* GameScene.swift */; };
-		3A2755392BDF468900F47882 /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755352BDF468900F47882 /* OxygenBar.swift */; };
 		3A27553A2BDF468900F47882 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755362BDF468900F47882 /* ContentView.swift */; };
-		3A27553B2BDF468900F47882 /* CollisionObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755372BDF468900F47882 /* CollisionObjects.swift */; };
-		3A27553F2BDF46F800F47882 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553C2BDF46F800F47882 /* Utility.swift */; };
-		3A2755402BDF46F800F47882 /* GyroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553D2BDF46F800F47882 /* GyroManager.swift */; };
-		3A2755412BDF46F800F47882 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27553E2BDF46F800F47882 /* Constant.swift */; };
-		3A2755452BDFEB8200F47882 /* EndingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2755442BDFEB8200F47882 /* EndingScene.swift */; };
 		3A92D4672BDA3E000033F7FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4662BDA3E000033F7FE /* Assets.xcassets */; };
 		3A92D46A2BDA3E000033F7FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */; };
+		3AE0327D2BE0D64E00CEFAFF /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0327C2BE0D64E00CEFAFF /* Misc.swift */; };
+		3AE0327F2BE0D6D400CEFAFF /* MatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */; };
+		3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032802BE0D79700CEFAFF /* SharkModel.swift */; };
+		3AE032832BE0D7C800CEFAFF /* BombModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032822BE0D7C800CEFAFF /* BombModel.swift */; };
+		3AE032852BE0D7F100CEFAFF /* PortalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032842BE0D7F100CEFAFF /* PortalModel.swift */; };
+		3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */; };
+		3AE032892BE0D9C300CEFAFF /* MultiplayerLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */; };
+		3AE0328B2BE101CC00CEFAFF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0328A2BE101CC00CEFAFF /* GameView.swift */; };
+		3AE0328F2BE110F300CEFAFF /* MPConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */; };
+		3AE032912BE1294800CEFAFF /* MPGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032902BE1294800CEFAFF /* MPGameEvent.swift */; };
+		3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032922BE1380200CEFAFF /* MPPeersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A2755202BDF461300F47882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2755212BDF461300F47882 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A2755232BDF461300F47882 /* FrameHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
-		3A2755242BDF461300F47882 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
-		3A2755252BDF461300F47882 /* ScreenshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotView.swift; sourceTree = "<group>"; };
-		3A2755272BDF461300F47882 /* StoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		3A2755292BDF461300F47882 /* DivingGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivingGame.swift; sourceTree = "<group>"; };
-		3A27552A2BDF461300F47882 /* Haptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
-		3A2755342BDF468900F47882 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		3A2755352BDF468900F47882 /* OxygenBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
 		3A2755362BDF468900F47882 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3A2755372BDF468900F47882 /* CollisionObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionObjects.swift; sourceTree = "<group>"; };
-		3A27553C2BDF46F800F47882 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		3A27553D2BDF46F800F47882 /* GyroManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroManager.swift; sourceTree = "<group>"; };
-		3A27553E2BDF46F800F47882 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		3A2755442BDFEB8200F47882 /* EndingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingScene.swift; sourceTree = "<group>"; };
 		3A92D45F2BDA3DFF0033F7FE /* DivingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DivingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A92D4662BDA3E000033F7FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AE0327C2BE0D64E00CEFAFF /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchManager.swift; sourceTree = "<group>"; };
+		3AE032802BE0D79700CEFAFF /* SharkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkModel.swift; sourceTree = "<group>"; };
+		3AE032822BE0D7C800CEFAFF /* BombModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombModel.swift; sourceTree = "<group>"; };
+		3AE032842BE0D7F100CEFAFF /* PortalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalModel.swift; sourceTree = "<group>"; };
+		3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyView.swift; sourceTree = "<group>"; };
+		3AE0328A2BE101CC00CEFAFF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		3AE0328C2BE10FE300CEFAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPConnectionManager.swift; sourceTree = "<group>"; };
+		3AE032902BE1294800CEFAFF /* MPGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPGameEvent.swift; sourceTree = "<group>"; };
+		3AE032922BE1380200CEFAFF /* MPPeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPeersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,41 +67,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3A2755262BDF461300F47882 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				3A2755232BDF461300F47882 /* FrameHandler.swift */,
-				3A2755242BDF461300F47882 /* FrameView.swift */,
-				3A2755252BDF461300F47882 /* ScreenshotView.swift */,
-			);
-			path = Screenshots;
-			sourceTree = "<group>";
-		};
-		3A2755282BDF461300F47882 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3A2755372BDF468900F47882 /* CollisionObjects.swift */,
-				3A2755362BDF468900F47882 /* ContentView.swift */,
-				3A2755342BDF468900F47882 /* GameScene.swift */,
-				3A2755352BDF468900F47882 /* OxygenBar.swift */,
-				3A2755262BDF461300F47882 /* Screenshots */,
-				3A2755272BDF461300F47882 /* StoryView.swift */,
-				3A2755442BDFEB8200F47882 /* EndingScene.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3A27552B2BDF461300F47882 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3A27553E2BDF46F800F47882 /* Constant.swift */,
-				3A27553D2BDF46F800F47882 /* GyroManager.swift */,
-				3A27553C2BDF46F800F47882 /* Utility.swift */,
-				3A27552A2BDF461300F47882 /* Haptic.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		3A92D4562BDA3DFF0033F7FE = {
 			isa = PBXGroup;
 			children = (
@@ -122,11 +86,16 @@
 		3A92D4612BDA3DFF0033F7FE /* DivingGame */ = {
 			isa = PBXGroup;
 			children = (
+				3AE0328C2BE10FE300CEFAFF /* Info.plist */,
+				3AE0328D2BE1109B00CEFAFF /* MultiPeerConnectivity */,
+				3AE0327B2BE0D5C600CEFAFF /* Utils */,
+				3AE0327A2BE0D5B800CEFAFF /* Controller */,
+				3AE032792BE0D5B100CEFAFF /* Model */,
+				3AE032782BE0D5AB00CEFAFF /* View */,
 				3A2755202BDF461300F47882 /* Assets.xcassets */,
 				3A2755292BDF461300F47882 /* DivingGame.swift */,
+				3A2755362BDF468900F47882 /* ContentView.swift */,
 				3A2755222BDF461300F47882 /* Preview Content */,
-				3A27552B2BDF461300F47882 /* Utils */,
-				3A2755282BDF461300F47882 /* Views */,
 				3A92D4662BDA3E000033F7FE /* Assets.xcassets */,
 				3A92D4682BDA3E000033F7FE /* Preview Content */,
 			);
@@ -139,6 +108,52 @@
 				3A92D4692BDA3E000033F7FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3AE032782BE0D5AB00CEFAFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */,
+				3AE0328A2BE101CC00CEFAFF /* GameView.swift */,
+				3AE032922BE1380200CEFAFF /* MPPeersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3AE032792BE0D5B100CEFAFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032802BE0D79700CEFAFF /* SharkModel.swift */,
+				3AE032822BE0D7C800CEFAFF /* BombModel.swift */,
+				3AE032842BE0D7F100CEFAFF /* PortalModel.swift */,
+				3AE032862BE0D86A00CEFAFF /* PlayerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3AE0327A2BE0D5B800CEFAFF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0327E2BE0D6D400CEFAFF /* MatchManager.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3AE0327B2BE0D5C600CEFAFF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3AE0327C2BE0D64E00CEFAFF /* Misc.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3AE0328D2BE1109B00CEFAFF /* MultiPeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032902BE1294800CEFAFF /* MPGameEvent.swift */,
+				3AE0328E2BE110F300CEFAFF /* MPConnectionManager.swift */,
+			);
+			path = MultiPeerConnectivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,20 +229,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A2755332BDF461300F47882 /* Haptic.swift in Sources */,
-				3A2755392BDF468900F47882 /* OxygenBar.swift in Sources */,
-				3A2755302BDF461300F47882 /* ScreenshotView.swift in Sources */,
-				3A2755452BDFEB8200F47882 /* EndingScene.swift in Sources */,
-				3A27553F2BDF46F800F47882 /* Utility.swift in Sources */,
-				3A2755402BDF46F800F47882 /* GyroManager.swift in Sources */,
-				3A27552F2BDF461300F47882 /* FrameView.swift in Sources */,
+				3AE0328F2BE110F300CEFAFF /* MPConnectionManager.swift in Sources */,
+				3AE0327D2BE0D64E00CEFAFF /* Misc.swift in Sources */,
+				3AE032832BE0D7C800CEFAFF /* BombModel.swift in Sources */,
+				3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */,
+				3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */,
+				3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */,
+				3AE032912BE1294800CEFAFF /* MPGameEvent.swift in Sources */,
+				3AE0328B2BE101CC00CEFAFF /* GameView.swift in Sources */,
+				3AE032892BE0D9C300CEFAFF /* MultiplayerLobbyView.swift in Sources */,
+				3AE0327F2BE0D6D400CEFAFF /* MatchManager.swift in Sources */,
 				3A2755322BDF461300F47882 /* DivingGame.swift in Sources */,
-				3A27553B2BDF468900F47882 /* CollisionObjects.swift in Sources */,
+				3AE032852BE0D7F100CEFAFF /* PortalModel.swift in Sources */,
 				3A27553A2BDF468900F47882 /* ContentView.swift in Sources */,
-				3A2755412BDF46F800F47882 /* Constant.swift in Sources */,
-				3A2755312BDF461300F47882 /* StoryView.swift in Sources */,
-				3A2755382BDF468900F47882 /* GameScene.swift in Sources */,
-				3A27552E2BDF461300F47882 /* FrameHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,11 +379,12 @@
 				DEVELOPMENT_TEAM = SW8FY3LA3R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DivingGame/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would like to play Diving Game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,11 +411,12 @@
 				DEVELOPMENT_TEAM = SW8FY3LA3R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DivingGame/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would like to play Diving Game";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

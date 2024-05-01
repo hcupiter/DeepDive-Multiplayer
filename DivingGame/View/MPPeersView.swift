@@ -12,6 +12,7 @@ struct MPPeersView: View {
     @EnvironmentObject var connectionManager: MPConnectionManager
     @EnvironmentObject var matchManager: MatchManager
     @Binding var startGame: Bool
+    @State private var isSendingInvitation = false
     
     var body: some View {
         VStack(alignment: .leading, content: {
@@ -24,6 +25,7 @@ struct MPPeersView: View {
             List(connectionManager.listAvailablePeers, id: \.self){ peer in
                 HStack {
                     Button(action: {
+                        isSendingInvitation = true
                         connectionManager.nearbyServiceBrowser.invitePeer(
                             peer,
                             to: connectionManager.session,
@@ -72,6 +74,11 @@ struct MPPeersView: View {
                 }
             }
         })
+        .overlay(
+            isSendingInvitation ? 
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle()) : nil
+        )
         .onAppear(){
             connectionManager.isAvailableToPlay = true
             connectionManager.startBrowsing()
@@ -84,6 +91,7 @@ struct MPPeersView: View {
         }
         .onChange(of: connectionManager.paired) { oldValue, newValue in
             startGame = newValue
+            isSendingInvitation = false
         }
     }
 }

@@ -28,6 +28,8 @@ class MatchManager: SKScene, ObservableObject{
     @Published var player2Id: String!
     @Published var player2Model: PlayerModel!
     
+    @Published var winner: PlayerModel!
+    
     var connectionManager: MPConnectionManager!
     
     // things that not
@@ -72,13 +74,18 @@ class MatchManager: SKScene, ObservableObject{
     
     // this function will run every frame
     override func update(_ currentTime: TimeInterval) {
+        // return if the game is finish
+        if isGameFinish {
+            return
+        }
+        
         // spawn shark if it's player 1 or the host
         if isTheHost {
+            portal.spawnPortal()
             sharkModel.spawnSharkWithinInterval(currentTime: currentTime)
             bombModel.spawnBomb()
         }
         
-        // move player
         self.controlledPlayer.movePlayerByGyro(dx: self.gyro.x, dy: self.gyro.y, connectionManager: self.connectionManager)
         self.controlledPlayerOxygen = self.controlledPlayer.playerOxygen.playerOxygenLevel // this to change the value of player oxygen
         
@@ -137,7 +144,6 @@ class MatchManager: SKScene, ObservableObject{
         addChild(player1Model.teamBox)
         addChild(player2Model.playerNode)
         addChild(player2Model.teamBox)
-        portal.spawnPortal()
     }
     
     func setControlledPlayer(){
@@ -175,6 +181,27 @@ class MatchManager: SKScene, ObservableObject{
         }
     }
     
+    func removeAllMonster(){
+        for node in self.children {
+            // check if the node is a shark
+            if let node = node as? SKSpriteNode, node.name == "Shark" || node.name == "Bomb" {
+                node.removeFromParent()
+            }
+        }
+    }
+    
+    func throwGameOverEvent(){
+        // send event to other person
+        let playerEvent = MPPlayerEvent(action: .reachPortal, playerId: controlledPlayer.id, playerPosition: controlledPlayer.playerNode.position)
+        connectionManager.send(playerEvent: playerEvent)
+        
+        isGameFinish = true
+        removeAllMonster()
+        winner = controlledPlayer
+        controlledPlayer.cameraNode.position = portal.portalNode.position
+        controlledPlayer.animateEnterPortal(portalNode: portal.portalNode)
+    }
+    
     
     // this function will handle receiving data from player
     func handlePlayerEvent(playerEvent: MPPlayerEvent, connectionManager: MPConnectionManager){
@@ -198,9 +225,23 @@ class MatchManager: SKScene, ObservableObject{
             else {
                 player2Model.animateGettingHurt()
             }
-            
+        
         case .death:
             print("death")
+            
+        case .reachPortal:
+            isGameFinish = true
+            removeAllMonster()
+            self.controlledPlayer.cameraNode.position = portal.portalNode.position
+            
+            if playerEvent.playerId == player1Model.id {
+                player1Model.animateEnterPortal(portalNode: portal.portalNode)
+                self.winner = player1Model
+            }
+            else {
+                player2Model.animateEnterPortal(portalNode: portal.portalNode)
+                self.winner = player2Model
+            }
         }
     }
     
@@ -214,7 +255,7 @@ class MatchManager: SKScene, ObservableObject{
             bombModel.synchronizeBombPlacingWithHost(position: entityEvent.position)
             
         case .portalSpawn:
-            print("Portal Spawned")
+            portal.synchronizePortalSpawnLocation(position: entityEvent.position)
             
         }
     }
@@ -265,9 +306,9 @@ extension MatchManager: SKPhysicsContactDelegate {
         }
         
         if object.name == "Portal" {
-            print("Player collied with portal")
-//            throwPlayerInsidePortalEvent()
-            return
+            if player.name == controlledPlayer.playerNode.name {
+                throwGameOverEvent()
+            }
         }
         
         if object.name == "Bomb"{

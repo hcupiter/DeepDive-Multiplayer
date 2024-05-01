@@ -40,8 +40,9 @@ struct GameView: View {
             }
         })
         .navigationDestination(isPresented: $isGameFinished) {
-            EmptyView()
-                .navigationBarBackButtonHidden(true)
+            EndView()
+                .environmentObject(connectionManager)
+                .environmentObject(matchManager)
         }
         
     }

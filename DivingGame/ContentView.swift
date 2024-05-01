@@ -12,8 +12,7 @@ struct ContentView: View {
     @StateObject var connectionManager: MPConnectionManager
     @StateObject var matchManager: MatchManager
     
-    @State var selectedMode: mode = mode.singleplayer
-    @State var userHasSelectMode: Bool = false
+    @State var userClickedPlay: Bool = false
     
     init(){
         _connectionManager = StateObject(
@@ -34,43 +33,31 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center, content: {
-                Text("Deep Dive")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text("Choose Play Mode")
+                Image("diverDefault")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100)
+                .padding(.bottom, 40)
                 
                 Button(action: {
-                    selectedMode = mode.singleplayer
-                    userHasSelectMode = true
+                    userClickedPlay = true
                 }, label: {
-                    Label("Singleplayer", systemImage: "person")
+                    Image(systemName: "play.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 50, height: 50)
+                        .padding()
                 })
                 .buttonStyle(BorderedProminentButtonStyle())
-                .disabled(true)
-                
-                Button(action: {
-                    selectedMode = mode.multiplayer
-                    userHasSelectMode = true
-                }, label: {
-                    Label("Multiplayer", systemImage: "person")
-                })
-                .buttonStyle(BorderedProminentButtonStyle())
-                .foregroundStyle(Color.white)
-                .tint(Color.green)
-                
             })
-            .navigationDestination(isPresented: $userHasSelectMode) {
-                switch selectedMode {
-                case .singleplayer:
-                    EmptyView()
-                case .multiplayer:
-                    MultiplayerLobbyView()
-                        .environmentObject(connectionManager)
-                        .environmentObject(matchManager)
-                        .onAppear(){
-                            connectionManager.listAvailablePeers = []
-                        }
-                }
+            .onAppear(){
+                userClickedPlay = false
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationDestination(isPresented: $userClickedPlay) {
+                MultiplayerLobbyView()
+                    .environmentObject(connectionManager)
+                    .environmentObject(matchManager)
             }
         }
         

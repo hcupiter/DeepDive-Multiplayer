@@ -24,7 +24,7 @@ struct OxygenBar: View {
                 .frame(width: 30, height: 200)
             Rectangle()
                 .fill(progressColor)
-                .frame(width: 30, height: percentage)
+                .frame(width: 30, height: Swift.max(percentage, 0))
         }
         .onChange(of: matchManager.controlledPlayerOxygen) { oldValue, newValue in
             current = newValue

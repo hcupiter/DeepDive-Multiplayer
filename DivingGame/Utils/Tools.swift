@@ -35,7 +35,7 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 
 func isInPortalFrame(portalNode: SKSpriteNode, objectNode: SKSpriteNode) -> Bool {
-    let portalFrame = portalNode.frame.insetBy(dx: 100, dy: 100)
+    let portalFrame = portalNode.frame.insetBy(dx: 150, dy: 150)
     let objectFrame = objectNode.frame
 
     return portalFrame.contains(objectFrame)

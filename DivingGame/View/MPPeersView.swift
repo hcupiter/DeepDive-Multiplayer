@@ -14,24 +14,41 @@ struct MPPeersView: View {
     @Binding var startGame: Bool
     
     var body: some View {
-        VStack(content: {
+        VStack(alignment: .leading, content: {
             Image(systemName: "magnifyingglass")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .padding()
+                .foregroundStyle(Color.blue)
             List(connectionManager.listAvailablePeers, id: \.self){ peer in
-                Button(action: {
-                    connectionManager.nearbyServiceBrowser.invitePeer(
-                        peer,
-                        to: connectionManager.session,
-                        withContext: nil,
-                        timeout: 30
-                    )
-                    matchManager.player1Id = connectionManager.myPeerId.displayName
-                    matchManager.player2Id = peer.displayName
-                }, label: {
-                    HStack {
-                        Image(systemName: "person")
-                        Text(peer.displayName)
-                    }
-                })
+                HStack {
+                    Button(action: {
+                        connectionManager.nearbyServiceBrowser.invitePeer(
+                            peer,
+                            to: connectionManager.session,
+                            withContext: nil,
+                            timeout: 30
+                        )
+                        matchManager.player1Id = connectionManager.myPeerId.displayName
+                        matchManager.player2Id = peer.displayName
+                    }, label: {
+                        HStack {
+                            Image("diverDefault")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            .aspectRatio(contentMode: .fill)
+                            Spacer()
+                            Image(systemName: "gamecontroller.fill")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                .aspectRatio(contentMode: .fill)
+                            }
+                        .listRowInsets(EdgeInsets())
+                    })
+                    .buttonStyle(BorderedButtonStyle())
+                }
+                .listStyle(.plain)
                 .alert("Received invitation from \(connectionManager.receivedInviteFrom?.displayName ?? "Unknown")", isPresented: $connectionManager.receivedInvite) {
                     Button(action: {
                         if let invitationHandler = connectionManager.invitationHandler {
@@ -58,6 +75,7 @@ struct MPPeersView: View {
         .onAppear(){
             connectionManager.isAvailableToPlay = true
             connectionManager.startBrowsing()
+            connectionManager.startAdvertising()
         }
         .onDisappear(){
             connectionManager.isAvailableToPlay = false

@@ -28,7 +28,7 @@ struct MultiplayerLobbyView: View {
                         connectionManager.stopBrowsing()
                         connectionManager.stopAdvertising()
                     }, label: {
-                        Text("Cancel")
+                        Image(systemName: "xmark.circle.fill")
                             .frame(maxWidth: .infinity)
                     })
                 .buttonStyle(BorderedProminentButtonStyle())
@@ -38,6 +38,7 @@ struct MultiplayerLobbyView: View {
             .navigationBarBackButtonHidden(true)
             .onAppear(){
                 connectionManager.setupGame(matchManager: matchManager)
+                connectionManager.listAvailablePeers.removeAll()
             }
         .navigationDestination(
             isPresented: $startGame) {

@@ -16,14 +16,16 @@ class PlayerModel: ObservableObject {
     var mapNode: SKSpriteNode
     var teamBox: SKSpriteNode!
     var playerInitLocation: CGPoint! // to saves spawn location
+    var matchManager: MatchManager
     
     init(id: String, initLocation: CGPoint, mapNode: SKSpriteNode, matchManager: MatchManager){
         self.id = id
         self.playerOxygen = Oxygen(matchManager: matchManager)
         self.mapNode = mapNode
+        self.matchManager = matchManager
         cameraNode = SKCameraNode()
         cameraNode.position = initLocation
-        cameraNode.setScale(5)
+        cameraNode.setScale(2)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation
@@ -120,6 +122,16 @@ class PlayerModel: ObservableObject {
         connectionManager.send(playerEvent: playerEvent)
     }
     
+    func movePlayerByPosition(pos: CGPoint){
+        playerNode.position = pos
+        setTeamBoxPositionToPlayer()
+    }
+    
+    func setTeamBoxPositionToPlayer(){
+        teamBox.position.x = playerNode.position.x
+        teamBox.position.y = playerNode.position.y + 75
+    }
+    
     func animateGettingHurt(){
         let delayAction = SKAction.wait(forDuration: 0.1)
         let animation1 = SKAction.run {
@@ -134,16 +146,38 @@ class PlayerModel: ObservableObject {
         playerNode.run(sequenceAction)
     }
     
-    func movePlayerByPosition(pos: CGPoint){
-        playerNode.position = pos
-        setTeamBoxPositionToPlayer()
+    func animateEnterPortal(portalNode: SKSpriteNode) {
+        let spiralPath = UIBezierPath()
+        spiralPath.move(to: playerNode.position)
+        
+        let portalCenter = portalNode.position
+        let radius = portalNode.size.width / 2
+        var spiralRadius = radius * 1
+        let spiralAngle = CGFloat.pi * 2
+        
+        for i in 0...30 {
+            let angle = spiralAngle * CGFloat(i) / 45
+            let x = portalCenter.x + cos(angle) * spiralRadius
+            let y = portalCenter.y + sin(angle) * spiralRadius
+            spiralPath.addLine(to: CGPoint(x: x, y: y))
+            spiralRadius *= 0.9
+        }
+        
+        spiralPath.addLine(to: portalCenter)
+        
+        let followPathAction = SKAction.follow(spiralPath.cgPath, asOffset: false, orientToPath: true, duration: 2)
+        let fadeOutAction = SKAction.fadeOut(withDuration: 2)
+        let removeAction = SKAction.removeFromParent()
+        let setGameToFinishState = SKAction.run {
+            self.matchManager.isGameFinish  = true
+            print("Game finish? \(self.matchManager.isGameFinish)")
+        }
+        
+        // animation sequence
+        let sequenceAction = SKAction.sequence([followPathAction, fadeOutAction, removeAction, setGameToFinishState])
+        teamBox.run(sequenceAction)
+        playerNode.run(sequenceAction)
     }
-    
-    func setTeamBoxPositionToPlayer(){
-        teamBox.position.x = playerNode.position.x
-        teamBox.position.y = playerNode.position.y + 75
-    }
-
 }
 
 class Oxygen: ObservableObject {
@@ -172,6 +206,7 @@ class Oxygen: ObservableObject {
             // should decrease the oxygen level based on set interval and if the game isn't finished
             if abs(lastSavedOxygenTime - currentTime) >= oxygenDecreaseInterval && matchManager.isGameFinish == false{
                 if playerOxygenLevel > 0 {
+                    HapticUtils.runHapticOnBackgroundThread()
                     playerOxygenLevel -= 1
                     lastSavedOxygenTime = nil
                 }

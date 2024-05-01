@@ -29,6 +29,10 @@
 		3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032982BE20F6F00CEFAFF /* Tools.swift */; };
 		3AE0329B2BE2152E00CEFAFF /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329A2BE2152E00CEFAFF /* MapModel.swift */; };
 		3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */; };
+		3AE032A02BE28CA500CEFAFF /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0329F2BE28CA500CEFAFF /* EndView.swift */; };
+		3AE032A52BE2990C00CEFAFF /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */; };
+		3AE032A72BE2992100CEFAFF /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A62BE2992000CEFAFF /* FrameHandler.swift */; };
+		3AE032AA2BE2994500CEFAFF /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE032A92BE2994500CEFAFF /* FrameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		3AE032982BE20F6F00CEFAFF /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		3AE0329A2BE2152E00CEFAFF /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenBar.swift; sourceTree = "<group>"; };
+		3AE0329F2BE28CA500CEFAFF /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
+		3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotView.swift; sourceTree = "<group>"; };
+		3AE032A62BE2992000CEFAFF /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		3AE032A92BE2994500CEFAFF /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,8 @@
 				3AE032882BE0D9C300CEFAFF /* MultiplayerLobbyView.swift */,
 				3AE0328A2BE101CC00CEFAFF /* GameView.swift */,
 				3AE032922BE1380200CEFAFF /* MPPeersView.swift */,
+				3AE0329F2BE28CA500CEFAFF /* EndView.swift */,
+				3AE032A82BE2992600CEFAFF /* Screenshot */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +187,16 @@
 				3AE0329D2BE2750900CEFAFF /* OxygenBar.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3AE032A82BE2992600CEFAFF /* Screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				3AE032A42BE2990C00CEFAFF /* ScreenshotView.swift */,
+				3AE032A62BE2992000CEFAFF /* FrameHandler.swift */,
+				3AE032A92BE2994500CEFAFF /* FrameView.swift */,
+			);
+			path = Screenshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE032A52BE2990C00CEFAFF /* ScreenshotView.swift in Sources */,
 				3AE0328F2BE110F300CEFAFF /* MPConnectionManager.swift in Sources */,
 				3AE032972BE20CBC00CEFAFF /* HapticManager.swift in Sources */,
 				3AE0327D2BE0D64E00CEFAFF /* Constants.swift in Sources */,
@@ -259,17 +280,20 @@
 				3AE032932BE1380200CEFAFF /* MPPeersView.swift in Sources */,
 				3AE0329E2BE2750900CEFAFF /* OxygenBar.swift in Sources */,
 				3AE032872BE0D86A00CEFAFF /* PlayerModel.swift in Sources */,
+				3AE032AA2BE2994500CEFAFF /* FrameView.swift in Sources */,
 				3AE032812BE0D79700CEFAFF /* SharkModel.swift in Sources */,
 				3AE032992BE20F6F00CEFAFF /* Tools.swift in Sources */,
 				3AE032952BE20BD800CEFAFF /* GyroManager.swift in Sources */,
 				3AE032912BE1294800CEFAFF /* MPGameEvent.swift in Sources */,
 				3AE0328B2BE101CC00CEFAFF /* GameView.swift in Sources */,
+				3AE032A02BE28CA500CEFAFF /* EndView.swift in Sources */,
 				3AE032892BE0D9C300CEFAFF /* MultiplayerLobbyView.swift in Sources */,
 				3AE0329B2BE2152E00CEFAFF /* MapModel.swift in Sources */,
 				3AE0327F2BE0D6D400CEFAFF /* MatchManager.swift in Sources */,
 				3A2755322BDF461300F47882 /* DivingGame.swift in Sources */,
 				3AE032852BE0D7F100CEFAFF /* PortalModel.swift in Sources */,
 				3A27553A2BDF468900F47882 /* ContentView.swift in Sources */,
+				3AE032A72BE2992100CEFAFF /* FrameHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

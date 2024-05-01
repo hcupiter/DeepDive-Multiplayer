@@ -12,6 +12,7 @@ struct DivingGame: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light)
         }
     }
 }

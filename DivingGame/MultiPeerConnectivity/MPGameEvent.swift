@@ -16,6 +16,7 @@ struct MPPlayerEvent: Codable {
         case death
         case reset
         case end
+        case reachPortal
     }
     
     let action: Action

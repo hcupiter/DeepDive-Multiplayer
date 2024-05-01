@@ -9,15 +9,20 @@ import Foundation
 import SpriteKit
 
 class PortalModel {
-    var portalNode: SKSpriteNode
+    var matchManager: MatchManager
+    var portalNode: SKSpriteNode!
     
-    init(section3LimitNode: SKSpriteNode){
+    init(matchManager: MatchManager){
+        self.matchManager = matchManager
+    }
+    
+    func spawnPortal(){
         // Create the portal node
-        portalNode = SKSpriteNode(imageNamed: "Portal 1")
+        let portalNode = SKSpriteNode(imageNamed: "Portal 1")
         portalNode.name = "Portal"
         portalNode.size = CGSize(width: 150, height: 250)
         
-        portalNode.position = generatePortalPosition(portalNode: portalNode, section3LimitNode: section3LimitNode)
+        portalNode.position = generatePortalPosition(portalNode: portalNode, section3LimitNode: matchManager.section3LimitNode)
         //setup player physics
         portalNode.physicsBody = SKPhysicsBody(rectangleOf: portalNode.size)
         portalNode.physicsBody?.isDynamic = true
@@ -39,5 +44,7 @@ class PortalModel {
         
         // Apply the animation to the portal node
         portalNode.run(SKAction.repeatForever(animatePortalAction),withKey: "PortalAnimation")
+        self.portalNode = portalNode
+        matchManager.addChild(portalNode)
     }
 }

@@ -23,10 +23,11 @@ class PlayerModel: ObservableObject {
         self.mapNode = mapNode
         cameraNode = SKCameraNode()
         cameraNode.position = initLocation
-        cameraNode.setScale(10)
+        cameraNode.setScale(1.5)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation
+        playerInitLocation = initLocation
         playerInitLocation.y = initLocation.y
         if(self.id == matchManager.player1Id){
             playerInitLocation.x = initLocation.x - 50
@@ -38,9 +39,9 @@ class PlayerModel: ObservableObject {
         }
         
         // init team flag
-        teamBox = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
+        teamBox = SKSpriteNode(color: UIColor.red, size: CGSize(width: 20, height: 20))
         teamBox.position.x = initLocation.x
-        teamBox.position.y = initLocation.y + 200
+        teamBox.position.y = initLocation.y + 75
         
         //setup player physics
         playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
@@ -104,7 +105,7 @@ class PlayerModel: ObservableObject {
         
         cameraNode.position = playerNode.position
         teamBox.position.x = playerNode.position.x
-        teamBox.position.y = playerNode.position.y + 200
+        teamBox.position.y = playerNode.position.y + 75
         
         // send updates to other devices
         let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
@@ -114,7 +115,7 @@ class PlayerModel: ObservableObject {
     func movePlayerByPosition(pos: CGPoint){
         playerNode.position = pos
         teamBox.position.x = playerNode.position.x
-        teamBox.position.y = playerNode.position.y + 200
+        teamBox.position.y = playerNode.position.y + 75
     }
 
 }

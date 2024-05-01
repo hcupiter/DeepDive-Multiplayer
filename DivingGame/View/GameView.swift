@@ -9,6 +9,7 @@ import SwiftUI
 import SpriteKit
 
 struct GameView: View {
+    @Environment (\.dismiss) var dismiss;
     @EnvironmentObject var connectionManager: MPConnectionManager
     @EnvironmentObject var matchManager: MatchManager
     
@@ -26,6 +27,11 @@ struct GameView: View {
         .onAppear(){
             matchManager.playerPeerId = connectionManager.myPeerId.displayName
         }
+        .onReceive(connectionManager.$paired, perform: { _ in
+            if connectionManager.paired == false {
+                dismiss()
+            }
+        })
         
     }
 }

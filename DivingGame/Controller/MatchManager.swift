@@ -77,6 +77,7 @@ class MatchManager: SKScene, ObservableObject{
         // spawn shark if it's player 1 or the host
         if isTheHost {
             sharkModel.spawnSharkWithinInterval(currentTime: currentTime)
+            bombModel.spawnBomb()
         }
         
     }
@@ -109,7 +110,7 @@ class MatchManager: SKScene, ObservableObject{
         yLimiter = SKSpriteNode(color: UIColor.cyan, size: CGSize(width: 10, height: map.mapNode.size.height))
         yLimiter.position = CGPoint(x: 0, y: 0)
         
-        portal = PortalModel(section3LimitNode: section3LimitNode)
+        portal = PortalModel(matchManager: self)
         
         player1Model = PlayerModel(id: player1Id, initLocation: map.initLocation, mapNode: map.mapNode, matchManager: self)
         player2Model = PlayerModel(id: player2Id, initLocation: map.initLocation , mapNode: map.mapNode, matchManager: self)
@@ -122,7 +123,10 @@ class MatchManager: SKScene, ObservableObject{
         addChild(sceneHeight)
         addChild(map.mapNode)
         addChild(player1Model.playerNode)
+        addChild(player1Model.teamBox)
         addChild(player2Model.playerNode)
+        addChild(player2Model.teamBox)
+        portal.spawnPortal()
     }
     
     func setControlledPlayer(){
@@ -175,7 +179,7 @@ class MatchManager: SKScene, ObservableObject{
             sharkModel.synchronizeSharkSpawnWithHost(position: entityEvent.position, entityTextureName: entityEvent.entityTextureName, destinationY: entityEvent.destinationY, speed: entityEvent.speed, direction: entityEvent.direction)
             
         case .bombSpawn:
-            print("Bomb Spawned")
+            bombModel.synchronizeBombPlacingWithHost(position: entityEvent.position)
             
         case .portalSpawn:
             print("Portal Spawned")

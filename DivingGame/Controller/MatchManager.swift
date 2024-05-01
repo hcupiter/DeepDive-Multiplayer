@@ -172,7 +172,7 @@ class MatchManager: SKScene, ObservableObject{
     func handleEntityEvent(entityEvent: MPEntityEvent, connectionManager: MPConnectionManager){
         switch entityEvent.event {
         case .sharkSpawn:
-            sharkModel.addSharkFromHost(position: entityEvent.position, entityTextureName: entityEvent.entityTextureName, destinationY: entityEvent.destinationY, speed: entityEvent.speed, direction: entityEvent.direction)
+            sharkModel.synchronizeSharkSpawnWithHost(position: entityEvent.position, entityTextureName: entityEvent.entityTextureName, destinationY: entityEvent.destinationY, speed: entityEvent.speed, direction: entityEvent.direction)
             
         case .bombSpawn:
             print("Bomb Spawned")

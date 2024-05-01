@@ -21,7 +21,7 @@ class PlayerModel: ObservableObject {
         self.mapNode = mapNode
         cameraNode = SKCameraNode()
         cameraNode.position = initLocation
-        cameraNode.setScale(20)
+        cameraNode.setScale(10)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation

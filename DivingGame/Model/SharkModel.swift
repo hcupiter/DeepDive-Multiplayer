@@ -77,10 +77,10 @@ class SharkModel {
         matchManager.connectionManager.send(entityEvent: sharkSpawnEvent)
     }
     
-    func addSharkFromHost(position: CGPoint, entityTextureName: String, destinationY: CGFloat, speed: CGFloat, direction: Bool){
+    func synchronizeSharkSpawnWithHost(position: CGPoint, entityTextureName: String, destinationY: CGFloat, speed: CGFloat, direction: Bool){
         let sharkImage = entityTextureName
         let directionRight = direction
-        let sharkNode = SKSpriteNode(imageNamed: entityTextureName)
+        let sharkNode = SKSpriteNode(imageNamed: sharkImage)
         sharkNode.name = "Shark"
         sharkNode.position = position
         

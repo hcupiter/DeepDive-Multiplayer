@@ -86,10 +86,23 @@ class MPConnectionManager: NSObject, ObservableObject {
         self.matchManager.connectionManager = self
     }
     
-    func send(gameEvent: MPGameEvent){
+    func send(playerEvent: MPPlayerEvent){
         if session.connectedPeers.isEmpty == false {
             do {
-                if let data = gameEvent.data() {
+                if let data = playerEvent.data() {
+                    try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+                }
+            }
+            catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func send(entityEvent: MPEntityEvent){
+        if session.connectedPeers.isEmpty == false {
+            do {
+                if let data = entityEvent.data() {
                     try session.send(data, toPeers: session.connectedPeers, with: .reliable)
                 }
             }
@@ -157,9 +170,14 @@ extension MPConnectionManager: MCSessionDelegate {
     
     // this function will handle receiving data
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        if let gameEvent = try? JSONDecoder().decode(MPGameEvent.self, from: data) {
+        if let playerEvent = try? JSONDecoder().decode(MPPlayerEvent.self, from: data) {
             DispatchQueue.main.async {
-                self.matchManager.handleGameEvent(gameEvent: gameEvent, connectionManager: self)
+                self.matchManager.handlePlayerEvent(playerEvent: playerEvent, connectionManager: self)
+            }
+        }
+        else if let entityEvent = try? JSONDecoder().decode(MPEntityEvent.self, from: data){
+            DispatchQueue.main.async {
+                self.matchManager.handleEntityEvent(entityEvent: entityEvent, connectionManager: self)
             }
         }
     }

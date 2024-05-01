@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SpriteKit
 
-struct MPGameEvent: Codable {
-    enum Event: String, Codable {
+struct MPPlayerEvent: Codable {
+    enum Action: String, Codable {
         case start
         case move
         case hit
@@ -17,11 +18,31 @@ struct MPGameEvent: Codable {
         case end
     }
     
-    let action: Event
+    let action: Action
     let playerId: String
     let playerPosition: CGPoint
     
     func data() -> Data? {
         try? JSONEncoder().encode(self)
     }
+}
+
+struct MPEntityEvent: Codable {
+    enum EntityEvent: String, Codable {
+        case sharkSpawn
+        case bombSpawn
+        case portalSpawn
+    }
+    
+    let event: EntityEvent
+    let position: CGPoint
+    let entityTextureName: String!
+    let destinationY: CGFloat!
+    let speed: CGFloat!
+    let direction: Bool!
+    
+    func data() -> Data? {
+        try? JSONEncoder().encode(self)
+    }
+    
 }

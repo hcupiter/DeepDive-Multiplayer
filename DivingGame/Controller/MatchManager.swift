@@ -16,8 +16,6 @@ class MatchManager: SKScene, ObservableObject{
     @Published var isGameFinish: Bool!
     @Published var playerHasEnteredAPortal: Bool!
     
-    @Published var sharkList: [SharkModel]!
-    @Published var bombList: [BombModel]!
     @Published var portal: PortalModel!
     
     @Published var playerPeerId: String!
@@ -28,10 +26,11 @@ class MatchManager: SKScene, ObservableObject{
     
     @Published var player2Id: String!
     @Published var player2Model: PlayerModel!
-
+    
     var connectionManager: MPConnectionManager!
     
     // things that not
+    var isTheHost: Bool = false
     var sceneWidth : SKLabelNode!
     var sceneHeight :SKLabelNode!
     var map : MapModel!
@@ -49,6 +48,8 @@ class MatchManager: SKScene, ObservableObject{
     var yLimiter: SKSpriteNode!
     
     var sharkTraps: Bool = true
+    var sharkModel: SharkModel!
+    var bombModel: BombModel!
     
     override func didMove(to view: SKView) {
         initializeObject()
@@ -59,11 +60,25 @@ class MatchManager: SKScene, ObservableObject{
         // set physics for the map
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
+        
+        if controlledPlayer.id == player1Model.id {
+            isTheHost = true
+        }
+        else {
+            isTheHost = false
+        }
     }
     
+    // this function will run every frame
     override func update(_ currentTime: TimeInterval) {
         // move player
         self.controlledPlayer.movePlayerByGyro(dx: self.gyro.x, dy: self.gyro.y, connectionManager: self.connectionManager)
+        
+        // spawn shark if it's player 1 or the host
+        if isTheHost {
+            sharkModel.spawnSharkWithinInterval(currentTime: currentTime)
+        }
+        
     }
     
     func initializeObject(){
@@ -71,9 +86,6 @@ class MatchManager: SKScene, ObservableObject{
         isGameFinish = false
         playerHasEnteredAPortal = false
         
-        sharkList = []
-        bombList = []
-
         //testing nodes
         sceneWidth = SKLabelNode(text: "width : \(size.width)")
         sceneWidth.position = CGPoint(x: size.width/2, y: size.height/2)
@@ -103,6 +115,8 @@ class MatchManager: SKScene, ObservableObject{
         player2Model = PlayerModel(id: player2Id, initLocation: map.initLocation , mapNode: map.mapNode)
         
         sharkTraps = true
+        sharkModel = SharkModel(matchManager: self)
+        bombModel = BombModel(matchManager: self)
         
         addChild(sceneWidth)
         addChild(sceneHeight)
@@ -131,26 +145,41 @@ class MatchManager: SKScene, ObservableObject{
     }
     
     
-    // this function will handle receiving data
-    func handleGameEvent(gameEvent: MPGameEvent, connectionManager: MPConnectionManager){
-        switch gameEvent.action {
-            case .start:
-                print("Start event")
+    // this function will handle receiving data from player
+    func handlePlayerEvent(playerEvent: MPPlayerEvent, connectionManager: MPConnectionManager){
+        switch playerEvent.action {
+        case .start:
+            print("Start event")
             
-            case .move:
-            self.moveFoePlayer(foeId: gameEvent.playerId, foePosition: gameEvent.playerPosition)
+        case .move:
+            self.moveFoePlayer(foeId: playerEvent.playerId, foePosition: playerEvent.playerPosition)
             
-            case .reset:
-                print("Reset")
+        case .reset:
+            print("Reset")
             
-            case .end:
+        case .end:
             connectionManager.session.disconnect()
             
-            case .hit:
-                print("Got hit")
+        case .hit:
+            print("Got hit")
             
-            case .death:
-                print("death")
+        case .death:
+            print("death")
+        }
+    }
+    
+    // this function will handle receiving entity data from host
+    func handleEntityEvent(entityEvent: MPEntityEvent, connectionManager: MPConnectionManager){
+        switch entityEvent.event {
+        case .sharkSpawn:
+            sharkModel.addSharkFromHost(position: entityEvent.position, entityTextureName: entityEvent.entityTextureName, destinationY: entityEvent.destinationY, speed: entityEvent.speed, direction: entityEvent.direction)
+            
+        case .bombSpawn:
+            print("Bomb Spawned")
+            
+        case .portalSpawn:
+            print("Portal Spawned")
+            
         }
     }
 }
@@ -173,7 +202,7 @@ extension MatchManager: SKPhysicsContactDelegate {
             (secondBody.categoryBitMask & PhysicsCategory.player == 0)) {
             if let player = firstBody.node as? SKSpriteNode,
                let object = secondBody.node as? SKSpriteNode {
-//                playerCollideWithObject(player: player, object: object)
+                //                playerCollideWithObject(player: player, object: object)
             }
         }
     }

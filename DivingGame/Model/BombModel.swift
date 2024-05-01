@@ -8,6 +8,10 @@
 import Foundation
 import SpriteKit
 
-class BombModel: SKSpriteNode {
+class BombModel {
+    var matchManager: MatchManager
     
+    init(matchManager: MatchManager) {
+        self.matchManager = matchManager
+    }
 }

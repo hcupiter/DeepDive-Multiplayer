@@ -21,7 +21,7 @@ class PlayerModel: ObservableObject {
         self.mapNode = mapNode
         cameraNode = SKCameraNode()
         cameraNode.position = initLocation
-        cameraNode.setScale(2)
+        cameraNode.setScale(20)
         
         playerNode = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 50, height: 100))
         playerNode.position = initLocation
@@ -75,8 +75,8 @@ class PlayerModel: ObservableObject {
         cameraNode.position = playerNode.position
         
         // send updates to other devices
-        let gameEvent = MPGameEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
-        connectionManager.send(gameEvent: gameEvent)
+        let playerEvent = MPPlayerEvent(action: .move, playerId: self.id, playerPosition: playerNode.position)
+        connectionManager.send(playerEvent: playerEvent)
     }
     
     func movePlayerByPosition(pos: CGPoint){

@@ -52,6 +52,9 @@ struct ContentView: View {
             })
             .onAppear(){
                 userClickedPlay = false
+                connectionManager.listAvailablePeers.removeAll()
+                connectionManager.stopBrowsing()
+                connectionManager.stopAdvertising()
             }
             .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $userClickedPlay) {

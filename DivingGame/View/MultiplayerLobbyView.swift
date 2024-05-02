@@ -38,7 +38,6 @@ struct MultiplayerLobbyView: View {
             .navigationBarBackButtonHidden(true)
             .onAppear(){
                 connectionManager.setupGame(matchManager: matchManager)
-                connectionManager.listAvailablePeers.removeAll()
             }
         .navigationDestination(
             isPresented: $startGame) {

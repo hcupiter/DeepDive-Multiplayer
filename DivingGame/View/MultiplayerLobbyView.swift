@@ -25,6 +25,7 @@ struct MultiplayerLobbyView: View {
                     role: .cancel,
                     action: {
                         dismiss()
+                        connectionManager.listAvailablePeers.removeAll()
                         connectionManager.stopBrowsing()
                         connectionManager.stopAdvertising()
                     }, label: {

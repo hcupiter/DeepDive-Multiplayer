@@ -67,6 +67,9 @@ struct EndView: View {
         }
         .onAppear(){
             actionPressed = false
+            connectionManager.stopBrowsing()
+            connectionManager.stopAdvertising()
+            connectionManager.listAvailablePeers.removeAll()
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $actionPressed) {

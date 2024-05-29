@@ -1,7 +1,9 @@
 <img src="./DivingGame/Assets.xcassets/AppIcon.appiconset/deepdive-multiplayer-icon.jpg" alt="Logo" width="100" height="100">
 
 # DeepDive - Multiplayer
-The second version of DeepDive iOS game aims to deliver an engaging multiplayer experience, enabling users to play with their friends in real-time. This version, developed using SpriteKit and multipeer connection, incorporates significant improvements and new features based on user feedback and technological advancements. The primary focus is on real-time synchronization of character movements between two devices, ensuring a  responsive gameplay experience. By leveraging advanced technologies, DeepDive offers a seamless and immersive gaming experience, allowing players to connect and compete with friends effortlessly
+Introducing the second version of DeepDive, an iOS game that elevates the diving experience by allowing users to play multiplayer with their friends. Developed using SpriteKit and Multipeer Connectivity, this app supports real-time synchronization of character movements between two devices, ensuring a smooth and immersive gameplay experience.
+
+This project, a part of our Nano Challenge 2 at the Apple Developer Academy, showcases our efforts to create a compelling and interactive game. Our goal was to impress with a well-coordinated diving adventure that highlights the technical capabilities of SpriteKit and real-time device synchronization.
 
 ## Technologies Used
 

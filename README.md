@@ -3,7 +3,7 @@
 # DeepDive - Multiplayer
 The primary aim of the second version of the DeepDive iOS game is to enhance the multiplayer experience, allowing users to engage with their friends in a seamless and interactive environment. This iteration focuses on providing a real-time synchronization of character movements between two devices, ensuring a smooth and engaging gameplay experience.
 
-DeepDive is a product of our efforts at the Apple Developer Academy, specifically developed as part of our Nano Challenge 2 project. Our goal was to create a game that would captivate users and offer a unique diving experience. Leveraging technologies such as SpriteKit and multipeer connectivity, we aimed to showcase our technical capabilities and innovation in game development.
+DeepDive is a product of our efforts at the Apple Developer Academy, specifically developed as part of our Nano Challenge 1 project. Our goal was to create a game that would captivate users and offer a unique diving experience. Leveraging technologies such as SpriteKit and multipeer connectivity, we aimed to showcase our technical capabilities and innovation in game development.
 
 In this version of DeepDive, our development efforts were concentrated on the back-end and game logic. This allowed us to build a robust and efficient system for multiplayer functionality and real-time synchronization. Consequently, the front-end design and visual styling were kept minimal to prioritize performance and gameplay mechanics. This strategic focus ensures that the core functionality operates flawlessly, providing a solid foundation for future design enhancements.
 

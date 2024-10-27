@@ -56,7 +56,7 @@ To install and run this app on your iOS Phone, follow these steps:
 
 ## Authors
 
-- [@Hans Arthur Cupiterson](https://www.github.com/KetsunoAna117)
+- [@Hans Arthur Cupiterson](https://www.github.com/hcupiter)
 - [@Muhammad Rasyad Caesarardhi](https://github.com/mrasyadc)
 - [@Andrew Oroh](https://github.com/Andreworoh27)
 
